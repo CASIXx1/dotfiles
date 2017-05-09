@@ -100,6 +100,12 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   call dein#add('rking/ag.vim')
   call dein#add('vim-scripts/vimgrep.vim')
   "call dein#add('ngmy/vim-rubocop')
+  
+  " Shell
+  " call dein#add('Shougo/vimshell')
+  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+  call dein#add('thinca/vim-quickrun')
+
   " Required:
   call dein#end()
   call dein#save_state()
@@ -299,3 +305,15 @@ map <silent> <leader>l :TlistToggle<CR>
 " Statuslineの設定
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ \[ENC=%{&fileencoding}]%P
+
+" VimShell
+" ,is: シェルを起動
+nnoremap <silent> ,vs :VimShell<CR>
+" ,ipy: pythonを非同期で起動
+nnoremap <silent> ,ipy :VimShellInteractive python<CR>
+" ,irb: irbを非同期で起動
+nnoremap <silent> ,irb :VimShellInteractive irb<CR>
+" ,ss: 非同期で開いたインタプリタに現在の行を評価させる
+vmap <silent> ,ss :VimShellSendString<CR>
+" 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
+nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
