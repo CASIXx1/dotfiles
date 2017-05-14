@@ -6,33 +6,45 @@ if has('mac')
     autocmd!
     autocmd InsertLeave * :call system(g:imeoff)
   augroup END
-  " noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
+  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
   inoremap <silent> <C-j> <ESC>:call system(g:imeoff)<CR>
 endif
 
-" Undo履歴をファイルに保存する
+" Undo履歴をファイルに保存
 set undodir=$HOME/.vim/undodir
 set undofile
 
+" 文字列を折り返す
 "set nowrap
 
-"set hlsearch
+" 検索結果をハイライト
+set hlsearch
 
-"set ignorecase
-"set smartcase
+" 小文字大文字無視で検索
+set ignorecase
+set smartcase
 
+" インデント設定
 set autoindent
 
-"set ruler
+" カーソルが何行目の何列目に置かれているかを表示
+set ruler
+" 行番号表示
 set number
-"set list
-"set wildmenu
-"set showcmd
+"不可視文字を可視化
+set listchars=tab:»-,trail:-,nbsp:%,eol:↲
+cnoremap l :set list
 
+" 保管機能
+set wildmode=list:longest,full
+" コマンド可視化
+set showcmd
+
+" Tab設定
 set shiftwidth=2
-"set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set expandtab
-"set tabstop=4
 "set smarttab
 
 "set clipboard=unnamed
@@ -105,6 +117,10 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   " call dein#add('Shougo/vimshell')
   call dein#add('Shougo/vimproc.vim', {'build': 'make'})
   call dein#add('thinca/vim-quickrun')
+
+  " Markdown
+  call dein#add('AtsushiSakai/myvim')
+  call dein#add('kannokanno/previm')
 
   " Required:
   call dein#end()
