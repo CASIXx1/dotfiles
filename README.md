@@ -1,2 +1,6 @@
 # config
 vimrcやzshrcなどのconfigリポジトリ
+
+# vimrc
+
+# zshrc
