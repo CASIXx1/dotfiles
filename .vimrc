@@ -1,73 +1,111 @@
-" IMEを自然にオフ
-if has('mac')
-  set ttimeoutlen=1
-  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
-  augroup MyIMEGroup
-    autocmd!
-    autocmd InsertLeave * :call system(g:imeoff)
-  augroup END
-  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
-  inoremap <silent> <C-j> <ESC>:call system(g:imeoff)<CR>
-endif
+set encoding=utf-8
+scriptencoding utf-8
 
-" Undo履歴をファイルに保存
-set undodir=$HOME/.vim/undodir
-set undofile
-
-" 文字列を折り返す
-"set nowrap
-
-" 検索結果をハイライト
-set hlsearch
-
-" 小文字大文字無視で検索
-set ignorecase
-set smartcase
-
-" インデント設定
-set autoindent
-
-" カーソルが何行目の何列目に置かれているかを表示
-set ruler
-" 行番号表示
-set number
-"不可視文字を可視化
-set listchars=tab:»-,trail:-,nbsp:%,eol:↲
-" cnoremap l :set list
-
-" 保管機能
-set wildmode=list:longest,full
-" コマンド可視化
-set showcmd
-
-" Tab設定
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
-"set smarttab
-
-"set clipboard=unnamed
-set clipboard=unnamed
-"filetype plugin indent on
-"syntax enable
-
-"if &compatible
-"  set nocompatible               " Be iMproved
-"endif
-
+" 基本設定読み込み
+:source ~/.vimrc.basic
 
 " dein設定読み込み
-if filereadable(expand('~/.vimrc.dein'))
-  source ~/.vimrc.dein
+" if filereadable(expand('~/.vimrc.dein'))
+"   source ~/.vimrc.dein
+" endif
+" let g:user_emmet_leader_key = '<C-E>'
+
+" Required:
+set runtimepath+=/Users/horikawayouyuu/.cache/dein/repos/github.com/Shougo/dein.vim
+  
+" Required:
+if dein#load_state('/Users/horikawayouyuu/.cache/dein')
+  call dein#begin('/Users/horikawayouyuu/.cache/dein')
+  
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/horikawayouyuu/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('mattn/emmet-vim')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " PHP "
+  " call dein#add('Shougo/neocomplete.vim')
+  " call dein#add('violetyk/neocomplete-php.vim')
+  call dein#add('Shougo/neocomplcache')
+
+  " nerdTree "
+  call dein#add('scrooloose/nerdtree')
+
+  " Vim-rails "
+  call dein#add('tpope/vim-rails')
+
+  " rubocop
+  call dein#add('scrooloose/syntastic.git')
+
+  " git
+  call dein#add('tpope/vim-fugitive')
+
+  " 日本語ヘルプ
+  call dein#add('vim-jp/vimdoc-ja')
+
+  " IDE化
+  call dein#add('Shougo/unite.vim')
+  call dein#add('vim-scripts/taglist.vim')
+
+  " 日本語入力系
+  " call dein#add('tyru/eskk.vim')
+  " call dein#add('fuenor/im_control.vim')
+
+  " コメント系
+  call dein#add('tomtom/tcomment_vim')
+
+  " 検索系
+  " :Unite file_mruを使えるように
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('rking/ag.vim')
+  call dein#add('vim-scripts/vimgrep.vim')
+  "call dein#add('ngmy/vim-rubocop')
+  
+  " Shell
+  " call dein#add('Shougo/vimshell')
+  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+  call dein#add('thinca/vim-quickrun')
+
+  " Markdown
+  call dein#add('AtsushiSakai/myvim')
+  call dein#add('kannokanno/previm')
+  call dein#add('plasticboy/vim-markdown')
+  call dein#add('tyru/open-browser.vim')
+
+  " color設定
+  call dein#add('itchyny/lightline.vim')
+  " call dein#add('Lokaltog/vim-powerline')
+  " call dein#add('powerline/powerline')
+
+  " Diff
+  call dein#add('vim-scripts/DirDiff.vim')
+
+  " 画面リサイズ
+  call dein#add('simeji/winresizer')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
 endif
-let g:user_emmet_leader_key = '<C-E>'
+  
+" Required:
+filetype plugin indent on
+syntax enable
+ 
+" 自動でcall dein#install()を実行
+if dein#check_install()
+  call dein#install()
+endif
 
 "neocompleteの設定
 "autocmd FileType php,ctp :set dictionary=~/.vim/dictionaries/php.dict
-
-
-" autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
+"autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 
 " 引数なしで実行したとき、NERDTreeを実行する
 let file_name = expand("%:p")
@@ -98,7 +136,7 @@ function! ExecuteNERDTree()
 
     endif
 endfunction
-noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
+noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
 "</cr></c-u></c-e>
 
 "ハイライト解除のmapping
@@ -239,7 +277,7 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Show_One_File = 1                
 let Tlist_Use_Right_Window = 1            
 let Tlist_Exit_OnlyWindow = 1            
-map <silent> <leader>l :TlistToggle<CR>      
+map <silent> <leader>t :TlistToggle<CR>      
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 
 " fugitive
@@ -248,8 +286,10 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ \[ENC=%{&fileencoding}]%P
 
 " VimShell
-" ,is: シェルを起動
+" ,vs: シェルを起動
 nnoremap <silent> ,vs :VimShell<CR>
+" ,vsp: シェルを起動
+nnoremap <silent> ,vp :VimShellPop<CR>
 " ,ipy: pythonを非同期で起動
 nnoremap <silent> ,ipy :VimShellInteractive python<CR>
 " ,irb: irbを非同期で起動
@@ -258,3 +298,136 @@ nnoremap <silent> ,irb :VimShellInteractive irb<CR>
 vmap <silent> ,ss :VimShellSendString<CR>
 " 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
 nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+
+" markdown設定
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" statusline設定
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+function! LightlineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightlineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let branch = fugitive#head()
+      return branch !=# '' ? mark.branch : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
