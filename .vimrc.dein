@@ -1,7 +1,4 @@
 " Required:
-set runtimepath+=/Users/horikawayouyuu/.cache/dein/repos/github.com/Shougo/dein.vim
-  
-" Required:
 if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   call dein#begin('/Users/horikawayouyuu/.cache/dein')
   
@@ -18,15 +15,16 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
   " PHP "
-"  call dein#add('Shougo/neocomplete.vim')
-"  call dein#add('violetyk/neocomplete-php.vim')
+  " call dein#add('Shougo/neocomplete.vim')
+  " call dein#add('violetyk/neocomplete-php.vim')
   call dein#add('Shougo/neocomplcache')
 
   " nerdTree "
   call dein#add('scrooloose/nerdtree')
 
-  " Vim-rails "
+  " Rails "
   call dein#add('tpope/vim-rails')
+  call dein#add('basyura/unite-rails')
 
   " rubocop
   call dein#add('scrooloose/syntastic.git')
@@ -63,6 +61,24 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   " Markdown
   call dein#add('AtsushiSakai/myvim')
   call dein#add('kannokanno/previm')
+  call dein#add('plasticboy/vim-markdown')
+  call dein#add('tyru/open-browser.vim')
+  " table作成
+  call dein#add('ywatase/mdt.vim')
+
+  " color設定
+  call dein#add('itchyny/lightline.vim')
+  " call dein#add('Lokaltog/vim-powerline')
+  " call dein#add('powerline/powerline')
+
+  " Diff
+  call dein#add('vim-scripts/DirDiff.vim')
+
+  " 画面リサイズ
+  call dein#add('simeji/winresizer')
+
+  " Filer
+  call dein#add('Shougo/vimfiler')
 
   " Required:
   call dein#end()
@@ -72,8 +88,3 @@ endif
 " Required:
 filetype plugin indent on
 syntax enable
- 
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
