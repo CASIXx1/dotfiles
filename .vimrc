@@ -37,8 +37,9 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   " nerdTree "
   call dein#add('scrooloose/nerdtree')
 
-  " Vim-rails "
+  " Rails "
   call dein#add('tpope/vim-rails')
+  call dein#add('basyura/unite-rails')
 
   " rubocop
   call dein#add('scrooloose/syntastic.git')
@@ -89,6 +90,9 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   " 画面リサイズ
   call dein#add('simeji/winresizer')
 
+  " Filer
+  call dein#add('Shougo/vimfiler')
+
   " Required:
   call dein#end()
   call dein#save_state()
@@ -136,7 +140,8 @@ function! ExecuteNERDTree()
 
     endif
 endfunction
-noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
+" noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
+noremap <c-n> :NERDTreeToggle<cr>
 "</cr></c-u></c-e>
 
 "ハイライト解除のmapping
@@ -271,6 +276,18 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> ,uk :<C-u>Unite bookmark<CR>
+nnoremap <silent> ,e  :<C-u>Unite file_rec/async:!<CR>
+
+" unite-rails
+noremap <silent> ,rc :<C-u>Unite rails/controller<CR>
+noremap <silent> ,rm :<C-u>Unite rails/model<CR>
+noremap <silent> ,rv :<C-u>Unite rails/view<CR>
+noremap <silent> ,rh :<C-u>Unite rails/helper<CR>
+noremap <silent> ,rs :<C-u>Unite rails/stylesheet<CR>
+noremap <silent> ,rj :<C-u>Unite rails/javascript<CR>
+noremap <silent> ,rr :<C-u>Unite rails/route<CR>
+noremap <silent> ,rg :<C-u>Unite rails/gemfile<CR>
+noremap <silent> ,rt :<C-u>Unite rails/spec<CR>
 
 " Taglist
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
@@ -298,6 +315,9 @@ nnoremap <silent> ,irb :VimShellInteractive irb<CR>
 vmap <silent> ,ss :VimShellSendString<CR>
 " 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
 nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+" 現在のディレクトリを表示する
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
 
 " markdown設定
 au BufRead,BufNewFile *.md set filetype=markdown
