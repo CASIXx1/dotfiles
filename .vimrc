@@ -360,3 +360,14 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
+
+" 現在開いているファイルを実行 (only php|ruby|go)
+function! ExecuteCurrentFile()
+  if &filetype == 'php' || &filetype == 'ruby'
+    exe '!' . &filetype . ' %'
+  endif
+  if &filetype == 'go'
+    exe '!go run *.go'
+  endif
+endfunction
+" nnoremap <Space> :call ExecuteCurrentFile()<CR>
