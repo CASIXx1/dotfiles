@@ -4,12 +4,14 @@ scriptencoding utf-8
 " 基本設定読み込み
 :source ~/.vimrc.basic
 
+let current_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
 " dein設定読み込み
 " Required:
 set runtimepath+=/Users/horikawayouyuu/.cache/dein/repos/github.com/Shougo/dein.vim
-  
+
 :source ~/.vimrc.dein
- 
+
 " 自動でcall dein#install()を実行
 if dein#check_install()
   call dein#install()
@@ -200,10 +202,10 @@ noremap <silent> ,rt :<C-u>Unite rails/spec<CR>
 
 " Taglist
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Show_One_File = 1                
-let Tlist_Use_Right_Window = 1            
-let Tlist_Exit_OnlyWindow = 1            
-map <silent> <leader>t :TlistToggle<CR>      
+let Tlist_Show_One_File = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
+map <silent> <leader>t :TlistToggle<CR>
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 
 " fugitive
@@ -371,3 +373,6 @@ function! ExecuteCurrentFile()
   endif
 endfunction
 " nnoremap <Space> :call ExecuteCurrentFile()<CR>
+
+" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
+" let g:indent_guides_enable_on_vim_startup = 1

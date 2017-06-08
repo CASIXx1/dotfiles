@@ -22,6 +22,9 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   " nerdTree "
   call dein#add('scrooloose/nerdtree')
 
+  " Ruby "
+  call dein#add('tpope/vim-endwise')
+
   " Rails "
   call dein#add('tpope/vim-rails')
   call dein#add('basyura/unite-rails')
@@ -70,12 +73,17 @@ if dein#load_state('/Users/horikawayouyuu/.cache/dein')
   call dein#add('itchyny/lightline.vim')
   " call dein#add('Lokaltog/vim-powerline')
   " call dein#add('powerline/powerline')
+  call dein#add('vim-scripts/AnsiEsc.vim')
+  call dein#add('bronson/vim-trailing-whitespace')
 
   " Diff
   call dein#add('vim-scripts/DirDiff.vim')
 
   " 画面リサイズ
   call dein#add('simeji/winresizer')
+
+  " インデント視覚化
+  call dein#add('nathanaelkane/vim-indent-guides')
 
   " Filer
   call dein#add('Shougo/vimfiler')
