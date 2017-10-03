@@ -1,0 +1,124 @@
+# Let dein manage dein
+# Required:
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# Add or remove your plugins here:
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# You can specify revision/branch/tag.
+[[plugins]]
+repo = 'Shougo/vimshell'
+
+# PHP "
+# repo = 'Shougo/neocomplete.vim'
+# repo = 'violetyk/neocomplete-php.vim'
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+
+# JavaScript "
+[[plugins]]
+repo = 'othree/yajs.vim'
+
+# nerdTree "
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# Ruby "
+[[plugins]]
+repo = 'tpope/vim-endwise'
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# Rails "
+[[plugins]]
+repo = 'tpope/vim-rails'
+[[plugins]]
+repo = 'basyura/unite-rails'
+
+# rubocop
+[[plugins]]
+repo = 'scrooloose/syntastic.git'
+
+# git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# 日本語ヘルプ
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+# IDE化
+[[plugins]]
+repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
+
+# 日本語入力系
+# repo = 'tyru/eskk.vim'
+# repo = 'fuenor/im_control.vim'
+
+# コメント系
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# 検索系
+# :Unite file_mruを使えるように
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+[[plugins]]
+repo = 'rking/ag.vim'
+[[plugins]]
+repo = 'vim-scripts/vimgrep.vim'
+#repo = 'ngmy/vim-rubocop'
+
+# Shell
+# repo = 'Shougo/vimshell'
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+# Markdown
+[[plugins]]
+repo = 'AtsushiSakai/myvim'
+[[plugins]]
+repo = 'kannokanno/previm'
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+# table作成
+[[plugins]]
+repo = 'ywatase/mdt.vim'
+
+# color設定
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+# repo = 'Lokaltog/vim-powerline'
+# repo = 'powerline/powerline'
+[[plugins]]
+repo = 'vim-scripts/AnsiEsc.vim'
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# Diff
+[[plugins]]
+repo = 'vim-scripts/DirDiff.vim'
+
+# 画面リサイズ
+[[plugins]]
+repo = 'simeji/winresizer'
+
+# インデント視覚化
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+# Filer
+[[plugins]]
+repo = 'Shougo/vimfiler'
