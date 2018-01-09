@@ -101,9 +101,9 @@ let g:neocomplcache_enable_skip_completion = 1
 let g:neocomplcache_skip_input_time = '0.5'
 
 " rubocop
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
+" let g:syntastic_mode_map = { 'mode': 'passive',
+"             \ 'active_filetypes': ['ruby'] }
+" let g:syntastic_ruby_checkers = ['rubocop']
 
 "execute pathogen#infect()
 "set statusline+=%#warningmsg#
@@ -381,14 +381,14 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
+" augroup AutoSyntastic
+"   autocmd!
+"   autocmd BufWritePost *.c,*.cpp call s:syntastic()
+" augroup END
+" function! s:syntastic()
+"   SyntasticCheck
+"   call lightline#update()
+" endfunction
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0

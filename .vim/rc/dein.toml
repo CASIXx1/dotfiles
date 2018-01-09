@@ -41,10 +41,6 @@ repo = 'tpope/vim-rails'
 [[plugins]]
 repo = 'basyura/unite-rails'
 
-# rubocop
-[[plugins]]
-repo = 'scrooloose/syntastic.git'
-
 # git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -122,3 +118,7 @@ repo = 'nathanaelkane/vim-indent-guides'
 # Filer
 [[plugins]]
 repo = 'Shougo/vimfiler'
+
+# 文法チェック
+[[plugins]]
+repo = 'w0rp/ale'
