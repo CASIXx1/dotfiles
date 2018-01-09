@@ -51,6 +51,8 @@ let g:user_emmet_leader_key = '<C-E>'
 "autocmd FileType php,ctp :set dictionary=~/.vim/dictionaries/php.dict
 "autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 
+" NERDTREE上でdotfileを隠さない
+let NERDTreeShowHidden=1
 " 引数なしで実行したとき、NERDTreeを実行する
 let file_name = expand("%:p")
 if has('vim_starting') &&  file_name == ""
