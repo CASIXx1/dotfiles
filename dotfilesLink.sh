@@ -1,5 +1,7 @@
 #!/bin/sh
+ln -sf ~/dotfiles/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.vimrc.basic ~/.vimrc.basic
 ln -sf ~/dotfiles/colors ~/.vim
 ln -sf ~/dotfiles/ftdetect ~/.vim
 ln -sf ~/dotfiles/indent ~/.vim
