@@ -53,11 +53,11 @@ let g:user_emmet_leader_key = '<C-E>'
 
 " NERDTREE上でdotfileを隠さない
 let NERDTreeShowHidden=1
-" 引数なしで実行したとき、NERDTreeを実行する
-let file_name = expand("%:p")
-if has('vim_starting') &&  file_name == ""
-  autocmd VimEnter * call ExecuteNERDTree()
-endif
+" デフォルトでツリーを表示させる
+let g:nerdtree_tabs_open_on_console_startup=1
+
+" 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " カーソルが外れているときは自動的にnerdtreeを隠す
 function! ExecuteNERDTree()
@@ -83,7 +83,7 @@ function! ExecuteNERDTree()
     endif
 endfunction
 " noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
-noremap <c-n> :NERDTreeToggle<cr>
+noremap <F2> :NERDTreeToggle<cr>
 "</cr></c-u></c-e>
 
 "ハイライト解除のmapping

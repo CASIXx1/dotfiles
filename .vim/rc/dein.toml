@@ -28,6 +28,8 @@ repo = 'othree/yajs.vim'
 # nerdTree "
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
 
 # Ruby "
 [[plugins]]
