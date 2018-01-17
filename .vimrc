@@ -405,3 +405,6 @@ endfunction
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 " let g:indent_guides_enable_on_vim_startup = 1
+"
+let g:ale_php_phpcs_executable = '/Users/horikawayouyuu/pear/bin/phpcs'
+let g:ale_php_phpcs_standard = 'PSR2'
