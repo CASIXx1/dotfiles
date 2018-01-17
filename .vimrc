@@ -205,10 +205,8 @@ endfor
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
 " tc 新しいタブを一番右に作る
 map <silent> [Tag]x :tabclose<CR>
-" tx タブを閉じる
-map <silent> [Tag]n :tabnext<CR>
-" tn 次のタブ
-map <silent> [Tag]p :tabprevious<CR>
+nnoremap <C-n> gt
+nnoremap <C-p> gT
 
 " Unite
 " let mapleader = "\<Space>"
