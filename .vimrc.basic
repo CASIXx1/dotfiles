@@ -52,3 +52,9 @@ set clipboard=unnamed
 
 " 構文ハイライト
 syntax enable
+
+" 最後に編集した位置に移動
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
