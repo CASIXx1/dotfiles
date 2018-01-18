@@ -25,11 +25,16 @@ repo = 'Shougo/neocomplcache'
 [[plugins]]
 repo = 'othree/yajs.vim'
 
+# icon設定
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
 # nerdTree "
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
+[[plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 # Ruby "
 [[plugins]]
