@@ -4,30 +4,33 @@
 repo = 'Shougo/dein.vim'
 
 # Add or remove your plugins here:
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-[[plugins]]
-repo = 'mattn/emmet-vim'
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
+# [[plugins]]
+# repo = 'Shougo/neosnippet-snippets'
+# [[plugins]]
+# repo = 'mattn/emmet-vim'
 
 # You can specify revision/branch/tag.
-[[plugins]]
-repo = 'Shougo/vimshell'
+# [[plugins]]
+# repo = 'Shougo/vimshell'
 
-# PHP "
-# repo = 'Shougo/neocomplete.vim'
-# repo = 'violetyk/neocomplete-php.vim'
+# 補完機能
+# repo = 'marcus/rsense'
 [[plugins]]
-repo = 'Shougo/neocomplcache'
+repo = 'Shougo/neocomplcache.vim'
+[[plugins]]
+repo = 'Shougo/neocomplcache-rsense.vim'
+# repo = 'violetyk/neocomplete-php.vim'
+# [[plugins]]
 
 # JavaScript "
-[[plugins]]
-repo = 'othree/yajs.vim'
+# [[plugins]]
+# repo = 'othree/yajs.vim'
 
 # icon設定
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
+# [[plugins]]
+# repo = 'ryanoasis/vim-devicons'
 # nerdTree "
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -43,24 +46,32 @@ repo = 'tpope/vim-endwise'
 repo = 'tpope/vim-surround'
 
 # Rails "
-[[plugins]]
-repo = 'tpope/vim-rails'
-[[plugins]]
-repo = 'basyura/unite-rails'
+# [[plugins]]
+# repo = 'tpope/vim-rails'
+# [[plugins]]
+# repo = 'basyura/unite-rails'
 
 # git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
 # 日本語ヘルプ
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
+# [[plugins]]
+# repo = 'vim-jp/vimdoc-ja'
 
 # IDE化
 [[plugins]]
 repo = 'Shougo/unite.vim'
+# [[plugins]]
+# repo = 'vim-scripts/taglist.vim'
+
+# 状態自動保存・復帰
 [[plugins]]
-repo = 'vim-scripts/taglist.vim'
+repo = 'xolox/vim-session'
+depends = ['xolox/vim-misc']
+
+[[plugins]]
+repo = 'xolox/vim-misc'
 
 # 日本語入力系
 # repo = 'tyru/eskk.vim'
@@ -72,47 +83,58 @@ repo = 'tomtom/tcomment_vim'
 
 # 検索系
 # :Unite file_mruを使えるように
-[[plugins]]
-repo = 'Shougo/neomru.vim'
+# [[plugins]]
+# repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'rking/ag.vim'
-[[plugins]]
-repo = 'vim-scripts/vimgrep.vim'
-#repo = 'ngmy/vim-rubocop'
+
+# [[plugins]]
+# repo = 'vim-scripts/vimgrep.vim'
+repo = 'ngmy/vim-rubocop'
 
 # Shell
 # repo = 'Shougo/vimshell'
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-[[plugins]]
-repo = 'thinca/vim-quickrun'
+# [[plugins]]
+# repo = 'Shougo/vimproc.vim'
+# [[plugins]]
+# repo = 'thinca/vim-quickrun'
 
 # Markdown
-[[plugins]]
-repo = 'AtsushiSakai/myvim'
-[[plugins]]
-repo = 'kannokanno/previm'
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-[[plugins]]
-repo = 'tyru/open-browser.vim'
+# [[plugins]]
+# repo = 'AtsushiSakai/myvim'
+# [[plugins]]
+# repo = 'kannokanno/previm'
+# [[plugins]]
+# repo = 'plasticboy/vim-markdown'
+# [[plugins]]
+# repo = 'tyru/open-browser.vim'
 # table作成
-[[plugins]]
-repo = 'ywatase/mdt.vim'
+# [[plugins]]
+# repo = 'ywatase/mdt.vim'
 
 # color設定
+# [[plugins]]
+# repo    = 'vim-airline/vim-airline'
+# depends = ['vim-airline-themes']
+#
+# [[plugins]]
+# repo = 'vim-airline/vim-airline-themes'
+# [[plugins]]
+# repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-# repo = 'Lokaltog/vim-powerline'
-# repo = 'powerline/powerline'
+[[plugins]]
+repo = 'Lokaltog/vim-powerline'
+[[plugins]]
+repo = 'powerline/powerline'
 [[plugins]]
 repo = 'vim-scripts/AnsiEsc.vim'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
 # Diff
-[[plugins]]
-repo = 'vim-scripts/DirDiff.vim'
+# [[plugins]]
+# repo = 'vim-scripts/DirDiff.vim'
 
 # 画面リサイズ
 [[plugins]]

@@ -8,3 +8,7 @@ ln -sf ~/dotfiles/indent ~/.vim
 ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/.wgetrc ~/.wgetrc
 ln -sf ~/dotfiles/Brewfile ~/Brewfile
+
+#zsh
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/.zshenv ~/.zshenv

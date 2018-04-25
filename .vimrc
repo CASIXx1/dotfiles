@@ -1,9 +1,6 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-" 基本設定読み込み
-:source ~/.vimrc.basic
-
 let current_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 " dein設定読み込み
@@ -30,11 +27,11 @@ if dein#load_state(s:dein_dir)
   " 予め TOML ファイル（後述）を用意しておく
   let g:rc_dir    = expand('~/.vim/rc')
   let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+  " let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  " call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " 設定終了
   call dein#end()
@@ -46,6 +43,9 @@ if dein#check_install()
   call dein#install()
 endif
 
+" 基本設定読み込み
+:source ~/.vimrc.basic
+
 let g:user_emmet_leader_key = '<C-E>'
 "neocompleteの設定
 "autocmd FileType php,ctp :set dictionary=~/.vim/dictionaries/php.dict
@@ -55,6 +55,8 @@ let g:user_emmet_leader_key = '<C-E>'
 let NERDTreeShowHidden=1
 " デフォルトでツリーを表示させる
 let g:nerdtree_tabs_open_on_console_startup=1
+" ラグが発生しないように
+let g:NERDTreeLimitedSyntax = 1
 "vim-nerdtree-syntax-highlight
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
@@ -105,21 +107,21 @@ noremap <F2> :NERDTreeToggle<cr>
 "ハイライト解除のmapping
 nnoremap <F3> :noh<CR>
 
-autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dictionary/php.dict filetype=php
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_manual_completion_start_length = 0
-let g:neocomplcache_caching_percent_in_statusline = 1
-let g:neocomplcache_enable_skip_completion = 1
-let g:neocomplcache_skip_input_time = '0.5'
+" autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dictionary/php.dict filetype=php
+" let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_enable_underbar_completion = 1
+" let g:neocomplcache_smart_case = 1
+" let g:neocomplcache_min_syntax_length = 3
+" let g:neocomplcache_manual_completion_start_length = 0
+" let g:neocomplcache_caching_percent_in_statusline = 1
+" let g:neocomplcache_enable_skip_completion = 1
+" let g:neocomplcache_skip_input_time = '0.5'
 
 " rubocop
-" let g:syntastic_mode_map = { 'mode': 'passive',
-"             \ 'active_filetypes': ['ruby'] }
-" let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_mode_map = { 'mode': 'passive',
+            \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 "execute pathogen#infect()
 "set statusline+=%#warningmsg#
@@ -132,9 +134,9 @@ let g:neocomplcache_skip_input_time = '0.5'
 "let g:syntastic_check_on_wq = 0
 
 " ruby
-let g:neocomplete#sources#dictionary#dictionaries = {
-\   'ruby': $HOME . '/dicts/ruby.dict',
-\ }
+" let g:neocomplete#sources#dictionary#dictionaries = {
+" \   'ruby': $HOME . '/dicts/ruby.dict',
+" \ }
 
 "------------------------------------
 " vim-rails
@@ -419,6 +421,35 @@ endfunction
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 " let g:indent_guides_enable_on_vim_startup = 1
-"
-let g:ale_php_phpcs_executable = '/Users/horikawayouyuu/pear/bin/phpcs'
-let g:ale_php_phpcs_standard = 'PSR2'
+
+" テーマカラー設定
+let g:airline_theme = 'molokai'
+
+" Vim終了時に現在のセッションを保存する
+autocmd VimLeave * NERDTreeClose
+"autocmd VimLeave * SaveSession
+let g:session_autosave ='yes'
+
+" # vimを辞める時に自動保存
+let g:session_directory = '~/sessions'
+
+"引数なし起動の時、前回のsessionを復元
+" Restore session with confirm
+function! s:RestoreSessionWithConfirm()
+  let msg = 'Do you want to restore previous session?'
+
+  if argc() == 0  || confirm(msg, "&Yes\n&No", 1, 'Question') == 1
+    execute 'RestoreSession'
+  endif
+endfunction
+command! RestoreSession :source ~/sessions/default.vim
+" 引数を指定しなかった時のみ、Sessionを有効にする
+if argc() == 0
+  autocmd VimEnter * nested call <SID>RestoreSessionWithConfirm()
+  " autocmd VimEnter * !$VIMRUNTIME/filetype.vim
+else
+	" 明示的に無効にする
+	let g:session_autoload = 0
+	let g:session_autosave = 0
+endif
+

@@ -1,21 +1,16 @@
 " IMEを自然にオフ
-if has('mac')
-  set ttimeoutlen=1
-  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
-  augroup MyIMEGroup
-    autocmd!
-    autocmd InsertLeave * :call system(g:imeoff)
-  augroup END
-  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
-  inoremap <silent> <C-j> <ESC>:call system(g:imeoff)<CR>
-endif
-
+" escが遠いので代用する。
+noremap <C-j> <esc>
+noremap! <C-j> <esc>
 " Undo履歴をファイルに保存
 set undodir=$HOME/.vim/undodir
 set undofile
 
+" 構文ハイライト
+syntax enable
+
 " 文字列を折り返す
-"set nowrap
+set nowrap
 
 " 検索結果をハイライト
 set hlsearch
@@ -50,11 +45,40 @@ set smarttab
 " Clipboardと連携
 set clipboard=unnamed
 
-" 構文ハイライト
-syntax enable
+" insertモードのバックスペースを使えるように
+set backspace=2
 
 " 最後に編集した位置に移動
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+
+" neocomplcacheの設定
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+
+
+" Rsense用の設定
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+"rsenseのインストールフォルダがデフォルトと異なるので設定
+let g:rsenseHome = expand('/usr/local/bin/rsense')
+let g:rsenseUseOmniFunc = 1
