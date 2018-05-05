@@ -297,6 +297,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 # vim
 alias v='nvim'
 
+# zsh plugins
+alias bm='cd-bookmark'
+
 ## git
 alias gs='git status'
 alias gl='git log --oneline'
@@ -320,15 +323,16 @@ alias dm='docker-machine'
 alias dc='docker-compose'
 alias dw='docker-compose run web'
 
-# Ruby, Rails
-alias be='bundle exec'
-
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+# ruby
+alias be='bundle exec'
+alias dash='rails-dashboard bin/rails s'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -371,4 +375,5 @@ export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init - zsh)"
 
 export PATH="$PATH:/Users/horikawa/Documents/Develop/engineer-training/horich"
+export PATH="$HOME/.pyenv/shims:$PATH"
 setopt auto_cd

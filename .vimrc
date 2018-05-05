@@ -56,14 +56,14 @@ let NERDTreeShowHidden=1
 " デフォルトでツリーを表示させる
 let g:nerdtree_tabs_open_on_console_startup=1
 " ラグが発生しないように
-let g:NERDTreeLimitedSyntax = 1
+" let g:NERDTreeLimitedSyntax = 1
 "vim-nerdtree-syntax-highlight
-let s:rspec_red = 'FE405F'
-let s:git_orange = 'F54D27'
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
-let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+" let s:rspec_red = 'FE405F'
+" let s:git_orange = 'F54D27'
+" let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+" let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+" let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+" let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
@@ -224,34 +224,86 @@ map <silent> [Tag]x :tabclose<CR>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
+" denite
+nnoremap [denite] <Nop>
+nmap <C-c> [denite]
+
+"現在開いているファイルのディレクトリ下のファイル一覧。
+nnoremap <silent> [denite]f :<C-u>DeniteBufferDir
+      \ -direction=topleft -cursor-wrap=true file file:new<CR>
+"バッファ一覧
+nnoremap <silent> [denite]b :<C-u>Denite -direction=topleft -cursor-wrap=true buffer<CR>
+"レジスタ一覧
+nnoremap <silent> [denite]r :<C-u>Denite -direction=topleft -cursor-wrap=true -buffer-name=register register<CR>
+"最近使用したファイル一覧
+nnoremap <silent> [denite]m :<C-u>Denite -direction=topleft -cursor-wrap=true file_mru<CR>
+"ブックマーク一覧
+nnoremap <silent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
+"ブックマークに追加
+nnoremap <silent> [denite]a :<C-u>DeniteBookmarkAdd<CR>
+
+".git以下のディレクトリ検索
+nnoremap <silent> [denite]k :<C-u>Denite -direction=topleft -cursor-wrap=true
+      \ -path=`substitute(finddir('.git', './;'), '.git', '', 'g')`
+      \ file_rec/git<CR>
+
+call denite#custom#source('file'    , 'matchers', ['matcher_cpsm', 'matcher_fuzzy'])
+
+call denite#custom#source('buffer'  , 'matchers', ['matcher_regexp'])
+call denite#custom#source('file_mru', 'matchers', ['matcher_regexp'])
+
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+  \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-W>', '<denite:move_up_path>', 'noremap')
+
+call denite#custom#var('file_rec', 'command',
+      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', [])
+call denite#custom#var('grep', 'default_opts',
+      \ ['--nocolor', '--nogroup'])
+
 " Unite
 " let mapleader = "\<Space>"
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> ,uk :<C-u>Unite bookmark<CR>
-nnoremap <silent> ,e  :<C-u>Unite file_rec/async:!<CR>
+" nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+" nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+" nnoremap <silent> ,uk :<C-u>Unite bookmark<CR>
+" nnoremap <silent> ,e  :<C-u>Unite file_rec/async:!<CR>
 
-" unite-rails
-noremap <silent> ,rc :<C-u>Unite rails/controller<CR>
-noremap <silent> ,rm :<C-u>Unite rails/model<CR>
-noremap <silent> ,rv :<C-u>Unite rails/view<CR>
-noremap <silent> ,rh :<C-u>Unite rails/helper<CR>
-noremap <silent> ,rs :<C-u>Unite rails/stylesheet<CR>
-noremap <silent> ,rj :<C-u>Unite rails/javascript<CR>
-noremap <silent> ,rr :<C-u>Unite rails/route<CR>
-noremap <silent> ,rg :<C-u>Unite rails/gemfile<CR>
-noremap <silent> ,rt :<C-u>Unite rails/spec<CR>
+" denite-rails
+let mapleader = "\<Space>"
+nnoremap [rails] <Nop>
+nmap     <Leader>r [rails]
+nnoremap [rails]r :Denite<Space>rails:
+nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:dwim<Return>
+nnoremap <silent> [rails]m :<C-u>Denite<Space>rails:model<Return>
+nnoremap <silent> [rails]c :<C-u>Denite<Space>rails:controller<Return>
+nnoremap <silent> [rails]v :<C-u>Denite<Space>rails:view<Return>
+nnoremap <silent> [rails]h :<C-u>Denite<Space>rails:helper<Return>
+nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
+nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
+
 
 " Taglist
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Show_One_File = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Exit_OnlyWindow = 1
-map <silent> <leader>t :TlistToggle<CR>
+" let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+" let Tlist_Show_One_File = 1
+" let Tlist_Use_Right_Window = 1
+" let Tlist_Exit_OnlyWindow = 1
+" map <silent> <leader>t :TlistToggle<CR>
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
+
+" Tagbar
+nmap <C-t> :TagbarToggle<CR>
 
 " fugitive
 " Statuslineの設定
@@ -422,9 +474,6 @@ endfunction
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 " let g:indent_guides_enable_on_vim_startup = 1
 
-" テーマカラー設定
-let g:airline_theme = 'molokai'
-
 " Vim終了時に現在のセッションを保存する
 autocmd VimLeave * NERDTreeClose
 "autocmd VimLeave * SaveSession
@@ -453,3 +502,38 @@ else
 	let g:session_autosave = 0
 endif
 
+" Ctagの場所指定
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+" autocmd VimEnter * TagbarOpen
+
+" indent
+" Vim
+let g:indentLine_color_term = 239
+let g:indentLine_char = '¦'
+
+" 整形
+vmap <Enter> <Plug>(EasyAlign)
+
+" 検索結果数
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
+
+" ctag自動更新
+augroup AlpacaTags
+  autocmd!
+  if exists(':Tags')
+    autocmd BufWritePost Gemfile TagsBundle
+    autocmd BufEnter * TagsSet
+    " 毎回保存と同時更新する場合はコメントを外す
+    " autocmd BufWritePost * TagsUpdate
+  endif
+augroup END
+
+" tagファイル捜索
+set tags=.tags;~
