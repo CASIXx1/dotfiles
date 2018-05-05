@@ -24,6 +24,11 @@ set autoindent
 
 " カーソルが何行目の何列目に置かれているかを表示
 set ruler
+
+set cursorline " カーソルラインをハイライト
+
+set wildmenu " コマンドモードの補完
+
 " 行番号表示
 set number
 "不可視文字を可視化
@@ -44,6 +49,20 @@ set smarttab
 
 " Clipboardと連携
 set clipboard=unnamed
+
+" ペースト時にインデントズレないように
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
 
 " insertモードのバックスペースを使えるように
 set backspace=2

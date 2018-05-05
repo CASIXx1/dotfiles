@@ -299,11 +299,10 @@ nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
 " let Tlist_Show_One_File = 1
 " let Tlist_Use_Right_Window = 1
 " let Tlist_Exit_OnlyWindow = 1
-" map <silent> <leader>t :TlistToggle<CR>
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 
 " Tagbar
-nmap <C-t> :TagbarToggle<CR>
+map <silent> <leader>t :TagbarToggle<CR>
 
 " fugitive
 " Statuslineの設定
@@ -525,15 +524,87 @@ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 set statusline=%{anzu#search_status()}
 
 " ctag自動更新
-augroup AlpacaTags
-  autocmd!
-  if exists(':Tags')
-    autocmd BufWritePost Gemfile TagsBundle
-    autocmd BufEnter * TagsSet
-    " 毎回保存と同時更新する場合はコメントを外す
-    " autocmd BufWritePost * TagsUpdate
-  endif
-augroup END
+" augroup AlpacaTags
+"   autocmd!
+"   if exists(':AlpacaTags')
+"     autocmd BufWritePost Gemfile AlpacaTagsBundle
+"     autocmd BufEnter * AlpacaTagsSet
+"     " 毎回保存と同時更新する場合はコメントを外す
+"     autocmd BufWritePost * AlpacaTagsUpdate
+"   endif
+" augroup END
 
-" tagファイル捜索
-set tags=.tags;~
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['tmp']
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+" let g:auto_ctags_filetype_mode = 1
+
+" set tags=.tags;~
+
+" def end移動
+" matchitを有効化
+source $VIMRUNTIME/macros/matchit.vim
+runtime macros/matchit.vim
+
+" ハイライトを有効にする
+let g:hl_matchit_enable_on_vim_startup = 1
+
+" カーソル下のハイライトをトグルする
+map <Space>m <Plug>(quickhl-manual-this)
+" ハイライトをすべて消す
+map <Space>M <Plug>(quickhl-manual-reset)
+
+" for accelerated-jk
+" nmap j <Plug>(accelerated_jk_gj)
+" nmap k <Plug>(accelerated_jk_gk)
+
+" for vim-tags
+" tagジャンプの時に複数候補がある時に一覧表示する
+nnoremap <C-]> g<C-]>
+
+" nerd_tree に gitの変更反映
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" カーソル下のURLや単語をブラウザで開く
+nmap <Leader>b <Plug>(openbrowser-smart-search)
+vmap <Leader>b <Plug>(openbrowser-smart-search)
+
+" ---------- 'osyo-manga/vim-over' ----------
+" 全体置換
+nnoremap <silent> <Space>o :OverCommandLine<CR>%s//g<Left><Left>
+
+" 選択範囲置換
+vnoremap <silent> <Space>o :OverCommandLine<CR>s//g<Left><Left>
+
+" カーソルしたの単語置換
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+
+" nerdtree highlight
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')

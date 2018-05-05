@@ -3,6 +3,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# 移動
+# [[plugins]]
+# repo = 'rhysd/accelerated-jk'
+
 # Add or remove your plugins here:
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -37,6 +41,8 @@ repo = 'ryanoasis/vim-devicons'
 repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
 # [[plugins]]
 # repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 
@@ -45,8 +51,29 @@ repo = 'jistr/vim-nerdtree-tabs'
 repo = 'tpope/vim-endwise'
 [[plugins]]
 repo = 'tpope/vim-surround'
+[[plugins]]
+repo = 'AndrewRadev/switch.vim'
+[[plugins]]
+repo = 't9md/vim-quickhl'
+# [[plugins]]
+# repo = 'vim-ruby/vim-ruby'
+# [[plugins]]
+# repo = 'vim-scripts/ruby-matchit'
+# [[plugins]]
+# repo = 'todesking/ruby_hl_lvar.vim'
+# refactoring
+# [[plugins]]
+# repo = 'ecomba/vim-ruby-refactoring'
+
+# %拡張
+[[plugins]]
+repo = 'tmhedberg/matchit'
+[[plugins]]
+repo = 'vimtaku/hl_matchit.vim'
 
 # Rails "
+[[plugins]]
+repo = 'tpope/vim-rails'
 [[plugins]]
 repo = 'thinca/vim-ref'
 [[plugins]]
@@ -56,7 +83,7 @@ repo = '5t111111/denite-rails'
 [[plugins]]
 repo = 'basyura/unite-rails'
 [[plugins]]
-repo = 'alpaca-tc/alpaca_tags'
+repo = 'soramugi/auto-ctags.vim'
 
 # git
 [[plugins]]
@@ -158,3 +185,15 @@ repo = 'nathanaelkane/vim-indent-guides'
 # 文法チェック
 [[plugins]]
 repo = 'w0rp/ale'
+
+# f検索強化
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+# ブラウザ検索
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+# 置換
+[[plugins]]
+repo = 'osyo-manga/vim-over'
