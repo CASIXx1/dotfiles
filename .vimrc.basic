@@ -25,7 +25,7 @@ set autoindent
 " カーソルが何行目の何列目に置かれているかを表示
 set ruler
 
-set cursorline " カーソルラインをハイライト
+" set cursorline " カーソルラインをハイライト
 
 set wildmenu " コマンドモードの補完
 
@@ -73,6 +73,9 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 
+" スワップファイルを作成しない
+:set noswapfile
+
 " neocomplcacheの設定
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -101,3 +104,4 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 "rsenseのインストールフォルダがデフォルトと異なるので設定
 let g:rsenseHome = expand('/usr/local/bin/rsense')
 let g:rsenseUseOmniFunc = 1
+

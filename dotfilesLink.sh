@@ -12,3 +12,6 @@ ln -sf ~/dotfiles/Brewfile ~/Brewfile
 #zsh
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.zshenv ~/.zshenv
+
+#tig
+ln -sf ~/dotfiles/.tigrc ~/.tigrc

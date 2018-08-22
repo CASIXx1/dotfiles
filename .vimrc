@@ -1,6 +1,3 @@
-set encoding=utf-8
-scriptencoding utf-8
-
 let current_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 " dein設定読み込み
@@ -57,6 +54,7 @@ let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup=1
 " ラグが発生しないように
 " let g:NERDTreeLimitedSyntax = 1
+" let g:NERDTreeHighlightCursorline = 0
 "vim-nerdtree-syntax-highlight
 " let s:rspec_red = 'FE405F'
 " let s:git_orange = 'F54D27'
@@ -64,6 +62,10 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
 " let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
 " let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+"
+" let g:NERDTreeDisableFileExtensionHighlight = 1
+" let g:NERDTreeDisableExactMatchHighlight = 1
+" let g:NERDTreeDisablePatternMatchHighlight = 1
 
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
@@ -283,7 +285,7 @@ call denite#custom#var('grep', 'default_opts',
 " denite-rails
 let mapleader = "\<Space>"
 nnoremap [rails] <Nop>
-nmap     <Leader>r [rails]
+nmap     <Leader>d [rails]
 nnoremap [rails]r :Denite<Space>rails:
 nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:dwim<Return>
 nnoremap <silent> [rails]m :<C-u>Denite<Space>rails:model<Return>
@@ -503,7 +505,6 @@ endif
 
 " Ctagの場所指定
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-" autocmd VimEnter * TagbarOpen
 
 " indent
 " Vim
@@ -523,23 +524,12 @@ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " statusline
 set statusline=%{anzu#search_status()}
 
-" ctag自動更新
-" augroup AlpacaTags
-"   autocmd!
-"   if exists(':AlpacaTags')
-"     autocmd BufWritePost Gemfile AlpacaTagsBundle
-"     autocmd BufEnter * AlpacaTagsSet
-"     " 毎回保存と同時更新する場合はコメントを外す
-"     autocmd BufWritePost * AlpacaTagsUpdate
-"   endif
-" augroup END
-
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['tmp']
-let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+" let g:auto_ctags = 1
+" let g:auto_ctags_directory_list = ['tmp']
+" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 " let g:auto_ctags_filetype_mode = 1
 
-" set tags=.tags;~
+set tags=.tags;~
 
 " def end移動
 " matchitを有効化
@@ -560,7 +550,7 @@ map <Space>M <Plug>(quickhl-manual-reset)
 
 " for vim-tags
 " tagジャンプの時に複数候補がある時に一覧表示する
-nnoremap <C-]> g<C-]>
+" nnoremap <C-]> g<C-]>
 
 " nerd_tree に gitの変更反映
 let g:NERDTreeIndicatorMapCustom = {
@@ -596,15 +586,54 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
-call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('py',           'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',           'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',          'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config',       'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',         'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',          'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',           'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('Gemfile',      'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('Gemfile.lock', 'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',           'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('gitignore',    'Brown',   'none', 'brown',   '#151515')
+call NERDTreeHighlightFile('php',          'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('png',          'Green',   'none', 'green',   '#151515')
+
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" gitgitterの反映時間
+set updatetime=2000
+
+" 文法チェックは保存時だけでいい
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+let g:auto_update_gtags = 1
+
+map <C-g> :Gtags
+map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+
+" rubyファイル保存時に、自動でtagファイル生成
+" autocmd BufWritePost *.rb !ripper-tags -R -f .tags

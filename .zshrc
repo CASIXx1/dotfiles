@@ -53,10 +53,10 @@ zplug "b4b4r07/79ee61f7c140c63d2786", \
     use:get_last_pane_path.sh
 
 # bitbucket も
-zplug "b4b4r07/hello_bitbucket", \
-    from:bitbucket, \
-    as:command, \
-    use:"*.sh"
+# zplug "b4b4r07/hello_bitbucket", \
+#     from:bitbucket, \
+#     as:command, \
+#     use:"*.sh"
 
 # `use` タグでキャプチャした文字列でリネームする
 zplug "b4b4r07/httpstat", \
@@ -94,7 +94,7 @@ if ! zplug check --verbose; then
 fi
 
 # コマンドをリンクして、PATH に追加し、プラグインは読み込む
-zplug load --verbose### zplug
+zplug load --verbose ### zplug
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
@@ -305,7 +305,7 @@ alias gs='git status'
 alias gl='git log --oneline'
 alias gco='git commit -m'
 alias gch='git checkout'
-alias gp='git push -u'
+alias gp='git push -u origin HEAD'
 alias gf='git fetch'
 alias gm='git merge'
 
@@ -374,6 +374,6 @@ function cd() {
 export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init - zsh)"
 
-export PATH="$PATH:/Users/horikawa/Documents/Develop/engineer-training/horich"
+export PATH="$PATH:/Users/horikawa/Documents/Develop/engineer-training/horich/phase0/"
 export PATH="$HOME/.pyenv/shims:$PATH"
 setopt auto_cd

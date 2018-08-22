@@ -33,6 +33,10 @@ repo = 'cohama/lexima.vim'
 # [[plugins]]
 # repo = 'othree/yajs.vim'
 
+# Programming language
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
 # icon設定
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -57,8 +61,8 @@ repo = 'AndrewRadev/switch.vim'
 repo = 't9md/vim-quickhl'
 # [[plugins]]
 # repo = 'vim-ruby/vim-ruby'
-# [[plugins]]
-# repo = 'vim-scripts/ruby-matchit'
+[[plugins]]
+repo = 'vim-scripts/ruby-matchit'
 # [[plugins]]
 # repo = 'todesking/ruby_hl_lvar.vim'
 # refactoring
@@ -66,10 +70,10 @@ repo = 't9md/vim-quickhl'
 # repo = 'ecomba/vim-ruby-refactoring'
 
 # %拡張
-[[plugins]]
-repo = 'tmhedberg/matchit'
-[[plugins]]
-repo = 'vimtaku/hl_matchit.vim'
+# [[plugins]]
+# repo = 'tmhedberg/matchit'
+# [[plugins]]
+# repo = 'vimtaku/hl_matchit.vim'
 
 # Rails "
 [[plugins]]
@@ -82,8 +86,16 @@ repo = 'yuku-t/vim-ref-ri'
 repo = '5t111111/denite-rails'
 [[plugins]]
 repo = 'basyura/unite-rails'
+# [[plugins]]
+# repo = 'soramugi/auto-ctags.vim'
 [[plugins]]
-repo = 'soramugi/auto-ctags.vim'
+repo = 'zebult/auto-gtags.vim'
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+[[plugins]]
+repo = '5t111111/alt-gtags.vim'
+[[plugins]]
+repo = 'tpope/vim-bundler'
 
 # git
 [[plugins]]
