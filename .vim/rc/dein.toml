@@ -55,8 +55,8 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 repo = 'tpope/vim-endwise'
 [[plugins]]
 repo = 'tpope/vim-surround'
-[[plugins]]
-repo = 'AndrewRadev/switch.vim'
+# [[plugins]]
+# repo = 'AndrewRadev/switch.vim'
 [[plugins]]
 repo = 't9md/vim-quickhl'
 # [[plugins]]
@@ -86,16 +86,18 @@ repo = 'yuku-t/vim-ref-ri'
 repo = '5t111111/denite-rails'
 [[plugins]]
 repo = 'basyura/unite-rails'
+
+# Tag
 # [[plugins]]
 # repo = 'soramugi/auto-ctags.vim'
-[[plugins]]
-repo = 'zebult/auto-gtags.vim'
-[[plugins]]
-repo = 'lighttiger2505/gtags.vim'
-[[plugins]]
-repo = '5t111111/alt-gtags.vim'
-[[plugins]]
-repo = 'tpope/vim-bundler'
+# [[plugins]]
+# repo = 'zebult/auto-gtags.vim'
+# [[plugins]]
+# repo = 'lighttiger2505/gtags.vim'
+# [[plugins]]
+# repo = '5t111111/alt-gtags.vim'
+# [[plugins]]
+# repo = 'tpope/vim-bundler'
 
 # git
 [[plugins]]
@@ -114,12 +116,12 @@ repo = 'Shougo/denite.nvim'
 repo = 'majutsushi/tagbar'
 
 # 状態自動保存・復帰
-[[plugins]]
-repo = 'xolox/vim-session'
-depends = ['xolox/vim-misc']
+# [[plugins]]
+# repo = 'xolox/vim-session'
+# depends = ['xolox/vim-misc']
 
-[[plugins]]
-repo = 'xolox/vim-misc'
+# [[plugins]]
+# repo = 'xolox/vim-misc'
 
 # 日本語入力系
 # repo = 'tyru/eskk.vim'
@@ -138,8 +140,9 @@ repo = 'rking/ag.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 
-[[plugins]]
-repo = 'ngmy/vim-rubocop'
+# 要らない??
+# [[plugins]]
+# repo = 'ngmy/vim-rubocop'
 
 # Shell
 # repo = 'Shougo/vimshell'
@@ -171,8 +174,8 @@ repo = 'itchyny/lightline.vim'
 repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'Townk/vim-autoclose'
-[[plugins]]
-repo = 'vim-scripts/AnsiEsc.vim'
+# [[plugins]]
+# repo = 'vim-scripts/AnsiEsc.vim'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
@@ -187,8 +190,8 @@ repo = 'junegunn/vim-easy-align'
 repo = 'simeji/winresizer'
 
 # インデント視覚化
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+# [[plugins]]
+# repo = 'nathanaelkane/vim-indent-guides'
 
 # Filer
 # [[plugins]]
@@ -203,8 +206,8 @@ repo = 'w0rp/ale'
 repo = 'rhysd/clever-f.vim'
 
 # ブラウザ検索
-[[plugins]]
-repo = 'tyru/open-browser.vim'
+# [[plugins]]
+# repo = 'tyru/open-browser.vim'
 
 # 置換
 [[plugins]]
