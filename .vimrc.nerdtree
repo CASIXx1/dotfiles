@@ -1,0 +1,108 @@
+" NERDTREE上でdotfileを隠さない
+let NERDTreeShowHidden=1
+" デフォルトでツリーを表示させる
+let g:nerdtree_tabs_open_on_console_startup=1
+" ラグが発生しないように
+" let g:NERDTreeLimitedSyntax = 1
+" let g:NERDTreeHighlightCursorline = 0
+"vim-nerdtree-syntax-highlight
+" let s:rspec_red = 'FE405F'
+" let s:git_orange = 'F54D27'
+" let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+" let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+" let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+" let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+"
+" let g:NERDTreeDisableFileExtensionHighlight = 1
+" let g:NERDTreeDisableExactMatchHighlight = 1
+" let g:NERDTreeDisablePatternMatchHighlight = 1
+
+" vim-devicons
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
+" dir-icons
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+" file-icons
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+
+" 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" カーソルが外れているときは自動的にnerdtreeを隠す
+function! ExecuteNERDTree()
+  "b:nerdstatus = 1 : NERDTree 表示中
+  "b:nerdstatus = 2 : NERDTree 非表示中
+
+  if !exists('g:nerdstatus')
+    execute 'NERDTree ./'
+      let g:windowWidth = winwidth(winnr())
+      let g:nerdtreebuf = bufnr('')
+      let g:nerdstatus = 1
+
+    elseif g:nerdstatus == 1
+      execute 'wincmd t'
+      execute 'vertical resize' 0
+      execute 'wincmd p'
+      let g:nerdstatus = 2
+    elseif g:nerdstatus == 2
+      execute 'wincmd t'
+      execute 'vertical resize' g:windowWidth
+      let g:nerdstatus = 1
+
+    endif
+endfunction
+" noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
+noremap <F2> :NERDTreeToggle<cr>
+"</cr></c-u></c-e>
+
+" nerd_tree に gitの変更反映
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" nerdtree highlight
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('py',           'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',           'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',          'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config',       'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',         'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',         'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',          'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',           'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('Gemfile',      'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('Gemfile.lock', 'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',           'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('gitignore',    'Brown',   'none', 'brown',   '#151515')
+call NERDTreeHighlightFile('php',          'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('png',          'Green',   'none', 'green',   '#151515')
+
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
