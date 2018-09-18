@@ -1,44 +1,5 @@
-let current_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
-" dein設定読み込み
-" Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-" プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.cache/dein')
-" dein.vim 本体
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
-
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.vim/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  " let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  " call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
-endif
-
-" もし、未インストールものものがあったらインストール
-if dein#check_install()
-  call dein#install()
-endif
+" dein読み込み
+:source ~/.vimrc.dein_load
 
 " 基本設定読み込み
 :source ~/.vimrc.basic
@@ -77,7 +38,7 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 
 " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " カーソルが外れているときは自動的にnerdtreeを隠す
 function! ExecuteNERDTree()
@@ -165,9 +126,10 @@ function! SetUpRailsSetting()
   nnoremap <buffer><Space>p :Rpreview<CR>
 endfunction
 
-aug MyAutoCmd
-  au User Rails call SetUpRailsSetting()
-aug END
+" 謎の設定...
+" aug MyAutoCmd
+"   au User Rails call SetUpRailsSetting()
+" aug END
 
 aug RailsDictSetting
   au!
@@ -240,7 +202,7 @@ nnoremap <silent> [denite]r :<C-u>Denite -direction=topleft -cursor-wrap=true -b
 "最近使用したファイル一覧
 nnoremap <silent> [denite]m :<C-u>Denite -direction=topleft -cursor-wrap=true file_mru<CR>
 "ブックマーク一覧
-nnoremap <silent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
+" nnoremapilent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
 "ブックマークに追加
 nnoremap <silent> [denite]a :<C-u>DeniteBookmarkAdd<CR>
 
@@ -476,32 +438,32 @@ endfunction
 " let g:indent_guides_enable_on_vim_startup = 1
 
 " Vim終了時に現在のセッションを保存する
-autocmd VimLeave * NERDTreeClose
+" autocmd VimLeave * NERDTreeClose
 "autocmd VimLeave * SaveSession
-let g:session_autosave ='yes'
+" let g:session_autosave ='yes'
 
 " # vimを辞める時に自動保存
-let g:session_directory = '~/sessions'
+" let g:session_directory = '~/sessions'
 
 "引数なし起動の時、前回のsessionを復元
 " Restore session with confirm
-function! s:RestoreSessionWithConfirm()
-  let msg = 'Do you want to restore previous session?'
-
-  if argc() == 0  || confirm(msg, "&Yes\n&No", 1, 'Question') == 1
-    execute 'RestoreSession'
-  endif
-endfunction
-command! RestoreSession :source ~/sessions/default.vim
+" function! s:RestoreSessionWithConfirm()
+"   let msg = 'Do you want to restore previous session?'
+"
+"   if argc() == 0  || confirm(msg, "&Yes\n&No", 1, 'Question') == 1
+"     execute 'RestoreSession'
+"   endif
+" endfunction
+" command! RestoreSession :source ~/sessions/default.vim
 " 引数を指定しなかった時のみ、Sessionを有効にする
-if argc() == 0
-  autocmd VimEnter * nested call <SID>RestoreSessionWithConfirm()
-  " autocmd VimEnter * !$VIMRUNTIME/filetype.vim
-else
-	" 明示的に無効にする
-	let g:session_autoload = 0
-	let g:session_autosave = 0
-endif
+" if argc() == 0
+"   autocmd VimEnter * nested call <SID>RestoreSessionWithConfirm()
+"   " autocmd VimEnter * !$VIMRUNTIME/filetype.vim
+" else
+" 	" 明示的に無効にする
+" 	let g:session_autoload = 0
+" 	let g:session_autosave = 0
+" endif
 
 " Ctagの場所指定
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
@@ -529,7 +491,7 @@ set statusline=%{anzu#search_status()}
 " let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 " let g:auto_ctags_filetype_mode = 1
 
-set tags=.tags;~
+set tags=tags;~
 
 " def end移動
 " matchitを有効化
@@ -567,8 +529,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 " カーソル下のURLや単語をブラウザで開く
-nmap <Leader>b <Plug>(openbrowser-smart-search)
-vmap <Leader>b <Plug>(openbrowser-smart-search)
+" nmap <Leader>b <Plug>(openbrowser-smart-search)
+" vmap <Leader>b <Plug>(openbrowser-smart-search)
 
 " ---------- 'osyo-manga/vim-over' ----------
 " 全体置換
@@ -627,11 +589,11 @@ let g:ale_lint_on_text_changed = 'never'
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 
-let g:auto_update_gtags = 1
+" let g:auto_update_gtags = 1
 
-map <C-g> :Gtags
-map <C-h> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
+" map <C-g> :Gtags
+" map <C-h> :Gtags -f %<CR>
+" map <C-j> :GtagsCursor<CR>
 " map <C-n> :cn<CR>
 " map <C-p> :cp<CR>
 
