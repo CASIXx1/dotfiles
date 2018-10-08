@@ -1,0 +1,51 @@
+# Ruby "
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby']
+[[plugins]]
+repo = 'tpope/vim-surround'
+on_ft = ['ruby']
+# [[plugins]]
+# repo = 'AndrewRadev/switch.vim'
+[[plugins]]
+repo = 't9md/vim-quickhl'
+on_ft = ['ruby']
+# [[plugins]]
+# repo = 'vim-ruby/vim-ruby'
+[[plugins]]
+repo = 'vim-scripts/ruby-matchit'
+on_ft = ['ruby']
+# [[plugins]]
+# repo = 'todesking/ruby_hl_lvar.vim'
+# refactoring
+# [[plugins]]
+# repo = 'ecomba/vim-ruby-refactoring'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_event = ['InsertEnter']
+
+# 補完機能
+[[plugins]]
+repo = 'Shougo/neocomplcache.vim'
+on_event = ['InsertEnter']
+[[plugins]]
+repo = 'Shougo/neocomplcache-rsense.vim'
+on_event = ['InsertEnter']
+# [[plugins]]
+# repo = 'violetyk/neocomplete-php.vim'

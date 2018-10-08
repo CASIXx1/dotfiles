@@ -4,7 +4,7 @@
 " 基本設定読み込み
 :source ~/.vimrc.basic
 
-" 基本設定読み込み
+" nerdtree設定読み込み
 :source ~/.vimrc.nerdtree
 
 let g:user_emmet_leader_key = '<C-E>'
@@ -76,19 +76,20 @@ endfunction
 "   au User Rails call SetUpRailsSetting()
 " aug END
 
-aug RailsDictSetting
-  au!
-aug END
+" aug RailsDictSetting
+"   au!
+" aug END
 "}}}
 
-let g:eskk#large_dictionary = {
-  \ 'path': $HOME . "/SKK-JISYO.L",
-  \ 'sorted': 1,
-  \ 'encoding': 'euc-jp',
-  \}
-
-let g:eskk#enable_completion = 1
-let g:eskk#egg_like_newline = 1
+" eskk周りの設定
+" let g:eskk#large_dictionary = {
+"   \ 'path': $HOME . "/SKK-JISYO.L",
+"   \ 'sorted': 1,
+"   \ 'encoding': 'euc-jp',
+"   \}
+"
+" let g:eskk#enable_completion = 1
+" let g:eskk#egg_like_newline = 1
 
 "------------------------------------
 " Tab機能
@@ -147,7 +148,7 @@ nnoremap <silent> [denite]r :<C-u>Denite -direction=topleft -cursor-wrap=true -b
 "最近使用したファイル一覧
 nnoremap <silent> [denite]m :<C-u>Denite -direction=topleft -cursor-wrap=true file_mru<CR>
 "ブックマーク一覧
-" nnoremapilent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
+nnoremap <silent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
 "ブックマークに追加
 nnoremap <silent> [denite]a :<C-u>DeniteBookmarkAdd<CR>
 
@@ -422,10 +423,11 @@ let g:indentLine_char = '¦'
 vmap <Enter> <Plug>(EasyAlign)
 
 " 検索結果数
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
+" lazyに移してみた
+" nmap n <Plug>(anzu-n-with-echo)
+" nmap N <Plug>(anzu-N-with-echo)
+" nmap * <Plug>(anzu-star)
+" nmap # <Plug>(anzu-sharp)
 " clear status
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " statusline
@@ -493,3 +495,81 @@ let g:ale_lint_on_enter = 0
 
 " rubyファイル保存時に、自動でtagファイル生成
 " autocmd BufWritePost *.rb !ripper-tags -R -f .tags
+
+" Neosnippet
+" スニペットファイルの場所指定
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
+
+" ファイル名で区別出来る場合は直接呼び出し
+" ファイル名で区別できない場合は一旦関数に投げる
+" augroup filetypedetect
+"   autocmd!  BufEnter *_spec.rb NeoSnippetSource ~/.vim/snippets/rspec.snip
+"   autocmd!  BufEnter *rb call s:LoadRailsSnippet()
+" augroup END
+
+" rails用スニペット呼び出し関数
+" function! s:LoadRailsSnippet()
+
+  " カレントディレクトリのディレクトリパス（絶対パス）取得
+  " let s:current_file_path = expand("%:p:h")
+
+  " appフォルダ内でなければ無視
+  " if ( s:current_file_path !~ "app/" )
+  "   return
+
+  " app/modelsフォルダ内ならば
+  " elseif ( s:current_file_path =~ "app/models" )
+  "   NeoSnippetSource ~/.vim/snippets/model.rails.snip
+
+  " app/controllersフォルダ内ならば
+  " elseif ( s:current_file_path =~ "app/controllers" )
+  "  NeoSnippetSource ~/.vim/snippets/controller.rails.snip
+
+  " app/viewsフォルダ内ならば
+  " elseif ( s:current_file_path =~ "app/views" )
+  "   NeoSnippetSource ~/.vim/snippets/view.rails.snip
+
+  " app/helpersフォルダ内ならば
+  " elseif ( s:current_file_path =~ "app/helpers" )
+  "   NeoSnippetSource ~/.vim/snippets/helper.rails.snip
+
+  " app/assetsフォルダ内ならば
+"   elseif ( s:current_file_path =~ "app/assets" )
+"     NeoSnippetSource ~/.vim/snippets/asset.rails.snip
+"   endif
+" endfunction
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" autocmd BufEnter * if exists("b:rails_root") | NeoComplCacheSetFileType ruby.rails | endif
+" autocmd BufEnter * if (expand("%") =~ "_spec\.rb$") || (expand("%") =~ "^spec.*\.rb$") | NeoComplCacheSetFileType ruby.rspec | endif
+" ここまで
+
+" yankround
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
+let g:yankround_max_history = 50
+" nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>

@@ -7,27 +7,9 @@ repo = 'Shougo/dein.vim'
 # [[plugins]]
 # repo = 'rhysd/accelerated-jk'
 
-# Add or remove your plugins here:
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-[[plugins]]
-repo = 'mattn/emmet-vim'
-
 # You can specify revision/branch/tag.
 # [[plugins]]
 # repo = 'Shougo/vimshell'
-
-# 補完機能
-[[plugins]]
-repo = 'Shougo/neocomplcache.vim'
-[[plugins]]
-repo = 'Shougo/neocomplcache-rsense.vim'
-# [[plugins]]
-# repo = 'violetyk/neocomplete-php.vim'
-[[plugins]]
-repo = 'cohama/lexima.vim'
 
 # JavaScript "
 # [[plugins]]
@@ -50,25 +32,6 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 # [[plugins]]
 # repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-# Ruby "
-[[plugins]]
-repo = 'tpope/vim-endwise'
-[[plugins]]
-repo = 'tpope/vim-surround'
-# [[plugins]]
-# repo = 'AndrewRadev/switch.vim'
-[[plugins]]
-repo = 't9md/vim-quickhl'
-# [[plugins]]
-# repo = 'vim-ruby/vim-ruby'
-[[plugins]]
-repo = 'vim-scripts/ruby-matchit'
-# [[plugins]]
-# repo = 'todesking/ruby_hl_lvar.vim'
-# refactoring
-# [[plugins]]
-# repo = 'ecomba/vim-ruby-refactoring'
-
 # %拡張
 # [[plugins]]
 # repo = 'tmhedberg/matchit'
@@ -84,8 +47,6 @@ repo = 'thinca/vim-ref'
 repo = 'yuku-t/vim-ref-ri'
 [[plugins]]
 repo = '5t111111/denite-rails'
-[[plugins]]
-repo = 'basyura/unite-rails'
 
 # Tag
 # [[plugins]]
@@ -127,19 +88,6 @@ repo = 'majutsushi/tagbar'
 # repo = 'tyru/eskk.vim'
 # repo = 'fuenor/im_control.vim'
 
-# コメント系
-[[plugins]]
-repo = 'tomtom/tcomment_vim'
-
-# 検索系
-# :Unite file_mruを使えるように
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-[[plugins]]
-repo = 'rking/ag.vim'
-[[plugins]]
-repo = 'osyo-manga/vim-anzu'
-
 # 要らない??
 # [[plugins]]
 # repo = 'ngmy/vim-rubocop'
@@ -172,22 +120,14 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-[[plugins]]
-repo = 'Townk/vim-autoclose'
 # [[plugins]]
 # repo = 'vim-scripts/AnsiEsc.vim'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
 
 # Diff
 # [[plugins]]
 # repo = 'vim-scripts/DirDiff.vim'
-
-# 画面リサイズ
-[[plugins]]
-repo = 'simeji/winresizer'
 
 # インデント視覚化
 # [[plugins]]
@@ -201,14 +141,47 @@ repo = 'simeji/winresizer'
 [[plugins]]
 repo = 'w0rp/ale'
 
-# f検索強化
-[[plugins]]
-repo = 'rhysd/clever-f.vim'
-
 # ブラウザ検索
 # [[plugins]]
 # repo = 'tyru/open-browser.vim'
 
+# コメント系
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# 検索系
+# :Unite file_mruを使えるように
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+[[plugins]]
+repo = 'rking/ag.vim'
+
+# 画面リサイズ
+[[plugins]]
+repo = 'simeji/winresizer'
+
+# 検索強化
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+'''
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
 # 置換
 [[plugins]]
 repo = 'osyo-manga/vim-over'
+
+# yank
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+'''
+
+# [[plugins]]
+# repo = 'kien/ctrlp.vim'

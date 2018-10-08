@@ -17,6 +17,8 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " let g:NERDTreeDisableExactMatchHighlight = 1
 " let g:NERDTreeDisablePatternMatchHighlight = 1
 
+let NERDTreeWinSize=26
+
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
@@ -31,8 +33,8 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 
 " カーソルが外れているときは自動的にnerdtreeを隠す
 function! ExecuteNERDTree()
-  "b:nerdstatus = 1 : NERDTree 表示中
-  "b:nerdstatus = 2 : NERDTree 非表示中
+  b:nerdstatus = 1 : NERDTree 表示中
+  b:nerdstatus = 2 : NERDTree 非表示中
 
   if !exists('g:nerdstatus')
     execute 'NERDTree ./'
@@ -53,22 +55,22 @@ function! ExecuteNERDTree()
     endif
 endfunction
 " noremap <c-n> :<c-u>:call ExecuteNERDTree()<cr>
-noremap <F2> :NERDTreeToggle<cr>
+noremap <F2> :NERDTreeTabsToggle<cr>
 "</cr></c-u></c-e>
 
 " nerd_tree に gitの変更反映
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+" let g:NERDTreeIndicatorMapCustom = {
+"     \ "Modified"  : "✹",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "✭",
+"     \ "Renamed"   : "➜",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "✖",
+"     \ "Dirty"     : "✗",
+"     \ "Clean"     : "✔︎",
+"     \ 'Ignored'   : '☒',
+"     \ "Unknown"   : "?"
+"     \ }
 
 " nerdtree highlight
 " NERDTress File highlighting
