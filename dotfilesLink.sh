@@ -1,4 +1,6 @@
 #!/bin/sh
+
+# vim
 ln -sf ~/dotfiles/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -sf ~/dotfiles/.vim/rc/dein_lazy.toml ~/.vim/rc/dein_lazy.toml
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
@@ -13,9 +15,21 @@ ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/.wgetrc ~/.wgetrc
 ln -sf ~/dotfiles/Brewfile ~/Brewfile
 
-#zsh
+# zsh
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.zshenv ~/.zshenv
 
-#tig
+# fish
+ln -sf ~/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+
+# tig
 ln -sf ~/dotfiles/.tigrc ~/.tigrc
+
+# tmux
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+
+# pry
+ln -sf ~/dotfiles/.pryrc ~/.pryrc
+
+# karabiner
+ln -sf ~/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json

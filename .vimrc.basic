@@ -21,6 +21,7 @@ set smartcase
 
 " インデント設定
 set autoindent
+set smartindent
 
 " カーソルが何行目の何列目に置かれているかを表示
 set ruler
@@ -104,4 +105,19 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 "rsenseのインストールフォルダがデフォルトと異なるので設定
 let g:rsenseHome = expand('/usr/local/bin/rsense')
 let g:rsenseUseOmniFunc = 1
+
+set nocompatible      " We're running Vim, not Vi!
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+" colorscheme molokai
+colorscheme lucario
+
+" " 256色¬
+set t_Co=256
+" " truecolor¬
+set termguicolors
+" " 背景色¬
+" set background=dark
 

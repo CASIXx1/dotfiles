@@ -1,25 +1,52 @@
 # Ruby "
-[[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = ['ruby']
-[[plugins]]
-repo = 'tpope/vim-surround'
-on_ft = ['ruby']
+# [[plugins]]
+# repo = 'tpope/vim-endwise'
+# on_ft = ['ruby']
+# Rubyの自動補完
+# [[plugins]]
+# repo = 'Shougo/deoplete-rct'
+# on_ft = ['ruby']
+
+# [[plugins]]
+# repo = 'thoughtbot/vim-rspec'
+# on_ft = ['ruby']
+
+# [[plugins]]
+# repo = 'tpope/vim-surround'
+# on_ft = ['ruby']
 # [[plugins]]
 # repo = 'AndrewRadev/switch.vim'
 [[plugins]]
-repo = 't9md/vim-quickhl'
+repo = 'vim-ruby/vim-ruby'
 on_ft = ['ruby']
 # [[plugins]]
-# repo = 'vim-ruby/vim-ruby'
-[[plugins]]
-repo = 'vim-scripts/ruby-matchit'
-on_ft = ['ruby']
+# repo = 'vim-scripts/ruby-matchit'
+# on_ft = ['ruby']
 # [[plugins]]
 # repo = 'todesking/ruby_hl_lvar.vim'
 # refactoring
 # [[plugins]]
 # repo = 'ecomba/vim-ruby-refactoring'
+[[plugins]]
+repo = 'itmammoth/run-rspec.vim'
+on_ft = ['ruby']
+
+# 補完
+# vim8でdeopleteを使うのに必要
+# [[plugins]]
+# repo = 'roxma/nvim-yarp'
+# on_event = ['InsertEnter']
+# on_ft = ['ruby']
+
+# [[plugins]]
+# repo = 'roxma/vim-hug-neovim-rpc'
+# on_event = ['InsertEnter']
+# on_ft = ['ruby']
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = ['InsertEnter']
+hook_add = 'let g:deoplete#enable_at_startup = 1'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
@@ -31,21 +58,10 @@ on_event = ['InsertEnter']
 repo = 'junegunn/vim-easy-align'
 on_event = ['InsertEnter']
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-on_event = ['InsertEnter']
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-on_event = ['InsertEnter']
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_event = ['InsertEnter']
 
-# 補完機能
+# Golang
 [[plugins]]
-repo = 'Shougo/neocomplcache.vim'
-on_event = ['InsertEnter']
-[[plugins]]
-repo = 'Shougo/neocomplcache-rsense.vim'
-on_event = ['InsertEnter']
-# [[plugins]]
-# repo = 'violetyk/neocomplete-php.vim'
+repo = 'fatih/vim-go'
+on_ft = ['go']

@@ -8,23 +8,9 @@
 :source ~/.vimrc.nerdtree
 
 let g:user_emmet_leader_key = '<C-E>'
-"neocompleteの設定
-"autocmd FileType php,ctp :set dictionary=~/.vim/dictionaries/php.dict
-"autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 
 "ハイライト解除のmapping
 nnoremap <F3> :noh<CR>
-
-" autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dictionary/php.dict filetype=php
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_smart_case = 1
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_manual_completion_start_length = 0
-" let g:neocomplcache_caching_percent_in_statusline = 1
-" let g:neocomplcache_enable_skip_completion = 1
-" let g:neocomplcache_skip_input_time = '0.5'
 
 " rubocop
 let g:syntastic_mode_map = { 'mode': 'passive',
@@ -40,11 +26,6 @@ let g:syntastic_ruby_checkers = ['rubocop']
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
-
-" ruby
-" let g:neocomplete#sources#dictionary#dictionaries = {
-" \   'ruby': $HOME . '/dicts/ruby.dict',
-" \ }
 
 "------------------------------------
 " vim-rails
@@ -134,9 +115,16 @@ map <silent> [Tag]x :tabclose<CR>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
-" denite
+" Denite
+" nnoremap <Leader>p :Denite buffer file_rec<CR>
+" nnoremap <Leader>b :Denite buffer<CR>
+" call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>', 'noremap')
+" call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>', 'noremap')
+
+" nnoremap [denite] <Nop>
+let mapleader = "\<Space>"
 nnoremap [denite] <Nop>
-nmap <C-c> [denite]
+nmap <Leader>d [denite]
 
 "現在開いているファイルのディレクトリ下のファイル一覧。
 nnoremap <silent> [denite]f :<C-u>DeniteBufferDir
@@ -147,11 +135,26 @@ nnoremap <silent> [denite]b :<C-u>Denite -direction=topleft -cursor-wrap=true bu
 nnoremap <silent> [denite]r :<C-u>Denite -direction=topleft -cursor-wrap=true -buffer-name=register register<CR>
 "最近使用したファイル一覧
 nnoremap <silent> [denite]m :<C-u>Denite -direction=topleft -cursor-wrap=true file_mru<CR>
+"最近使用したヤンク一覧
+nnoremap <silent> [denite]y :<C-u>Denite neoyank<CR>
 "ブックマーク一覧
 nnoremap <silent> [denite]c :<C-u>Denite -direction=topleft -cursor-wrap=true bookmark<CR>
 "ブックマークに追加
 nnoremap <silent> [denite]a :<C-u>DeniteBookmarkAdd<CR>
 
+" ファイル一覧
+noremap <silent> [denite]f :<C-u>Denite file_rec -mode=insert<CR>
+" grep
+noremap <silent> [denite]g :<C-u>Denite grep -mode=insert<CR>
+
+call denite#custom#var('file_rec', 'command', ['rg', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_ignore_globs'])
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ ['.git/', '__pycache__/', '*.o', '*.make', '*.min.*'])
+
+" ディレクトリ一覧
+noremap [denite]<C-d> :<C-u>Denite directory_rec<CR>
+noremap [denite]<C-c> :<C-u>Denite directory_rec -default-action=cd<CR>
 ".git以下のディレクトリ検索
 nnoremap <silent> [denite]k :<C-u>Denite -direction=topleft -cursor-wrap=true
       \ -path=`substitute(finddir('.git', './;'), '.git', '', 'g')`
@@ -169,38 +172,31 @@ call denite#custom#var('file_rec/git', 'command',
 call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', '<C-W>', '<denite:move_up_path>', 'noremap')
+call denite#custom#map('insert', '<C-T>', '<denite:do_action:tabopen>')
+
+" call denite#custom#var('file_rec', 'command',
+"       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#var('grep', 'separator', [])
-call denite#custom#var('grep', 'default_opts',
-      \ ['--nocolor', '--nogroup'])
-
-" Unite
-" let mapleader = "\<Space>"
-" nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-" nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-" nnoremap <silent> ,uk :<C-u>Unite bookmark<CR>
-" nnoremap <silent> ,e  :<C-u>Unite file_rec/async:!<CR>
+      \ ['rg', '--files', '--glob', '!.git'])
 
 " denite-rails
-let mapleader = "\<Space>"
 nnoremap [rails] <Nop>
-nmap     <Leader>d [rails]
+nmap     <Leader>r [rails]
 nnoremap [rails]r :Denite<Space>rails:
 nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:dwim<Return>
 nnoremap <silent> [rails]m :<C-u>Denite<Space>rails:model<Return>
 nnoremap <silent> [rails]c :<C-u>Denite<Space>rails:controller<Return>
 nnoremap <silent> [rails]v :<C-u>Denite<Space>rails:view<Return>
 nnoremap <silent> [rails]h :<C-u>Denite<Space>rails:helper<Return>
-nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
+" nnoremap <silent> [rails]r :<C-u>Denite<Space>rails:test<Return>
 nnoremap <silent> [rails]s :<C-u>Denite<Space>rails:spec<Return>
 
 
@@ -273,7 +269,7 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineFilename()
-  let fname = expand('%:t')
+  let fname = expand('%:s')
   return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
         \ fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
@@ -438,7 +434,21 @@ set statusline=%{anzu#search_status()}
 " let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 " let g:auto_ctags_filetype_mode = 1
 
-set tags=tags;~
+" set tags=tags;~
+
+" let g:alpaca_tags#config = {
+"     \   '_' : '-R --sort=yes',
+"     \   'ruby': '--languages=+Ruby',
+"     \ }
+"
+" augroup AlpacaTags
+"   autocmd!
+"   if exists(':AlpacaTags')
+"     autocmd BufWritePost Gemfile AlpacaTagsBundle
+"     autocmd BufEnter     *       AlpacaTagsSet
+"     autocmd BufWritePost *       AlpacaTagsUpdate
+"   endif
+" augroup END
 
 " def end移動
 " matchitを有効化
@@ -476,11 +486,11 @@ vnoremap <silent> <Space>o :OverCommandLine<CR>s//g<Left><Left>
 nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
 
 " gitgitterの反映時間
-set updatetime=2000
+set updatetime=1000
 
 " 文法チェックは保存時だけでいい
 " Write this in your vimrc file
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
@@ -557,19 +567,112 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-" autocmd BufEnter * if exists("b:rails_root") | NeoComplCacheSetFileType ruby.rails | endif
-" autocmd BufEnter * if (expand("%") =~ "_spec\.rb$") || (expand("%") =~ "^spec.*\.rb$") | NeoComplCacheSetFileType ruby.rspec | endif
-" ここまで
-
 " yankround
-nmap p <Plug>(yankround-p)
-xmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-xmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
+" nmap p <Plug>(yankround-p)
+" xmap p <Plug>(yankround-p)
+" nmap P <Plug>(yankround-P)
+" nmap gp <Plug>(yankround-gp)
+" xmap gp <Plug>(yankround-gp)
+" nmap <C-k> <Plug>(yankround-prev)
+" nmap <C-j> <Plug>(yankround-next)
 
-let g:yankround_max_history = 50
+" let g:yankround_max_history = 50
 " nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+" https://gist.github.com/qickstarter/3706057
+" function! OpenYard(...)
+"   let gem = a:1 == "" ? "" : a:1
+"   if gem == ""
+"     call OpenBrowser("http://localhost:8808/")
+"   else
+"     let url = "http://localhost:8808/docs/" . tolower(gem) . "/frames/"
+"     call OpenBrowser(url)
+"   endif
+" endfunction
+"
+" command!
+" \   -nargs=* -complete=file
+" \   OpenYard
+" \   call OpenYard(<q-args>)
+
+" マッピング
+" imap <Space>y :<C-U>OpenYard <C-R><C-W><CR>
+
+" unite-tag
+autocmd BufEnter *
+\   if empty(&buftype)
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
+\|  endif
+
+" gtags
+" カーソル下の呼び出し元一覧を出力
+nnoremap <silent> ,tr  :<C-u>Unite gtags/ref:<CR>
+" カーソル下の定義元を出力
+nnoremap <silent> ,td  :<C-u>Unite gtags/def:<CR>
+" タグファイル内grep
+nnoremap <silent> ,tg  :<C-u>Unite gtags/grep:<CR>
+
+" tigを呼び出す
+nnoremap tig :<C-u>w<CR>:te tig<CR>
+
+" sessionist
+let g:sessionist_directory = $HOME . '/.vim/.vim-sessions'
+
+" unite tag
+let g:unite_source_tag_max_name_length = 15
+let g:unite_source_tag_max_kind_length = 5
+let g:unite_source_tag_max_fname_length = 80
+
+" rspec, dispatch
+" let g:rspec_command = "Dispatch rspec {spec}"
+" ref
+nnoremap <silent> ,ri  :Ref ri
+
+command! -nargs=0 SaveSession call SaveSession()
+function! SaveSession()
+  exe 'NERDTreeTabsToggle'
+  call Sessionist#SaveSession()
+  exe 'NERDTreeTabsToggle'
+endfunction
+
+nnoremap <silent> 'ss :<C-u>call SaveSession()<CR>
+
+let g:sessionist_open = "\'so"
+
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+fun! PullAndRefresh()
+  set noconfirm
+  !git pull
+  bufdo e!
+  set confirm
+endfun
+
+nmap <silent> 'pr :<C-u>call PullAndRefresh()<CR>
+
+function! s:execute_ctags() abort
+  " 探すタグファイル名
+  let tag_name = 'tags'
+  " ディレクトリを遡り、タグファイルを探し、パス取得
+  let tags_path = findfile(tag_name, '.;')
+  " タグファイルパスが見つからなかった場合
+  if tags_path ==# ''
+    return
+  endif
+
+  " タグファイルのディレクトリパスを取得
+  " `:p:h`の部分は、:h filename-modifiersで確認
+  let tags_dirpath = fnamemodify(tags_path, ':p:h')
+  " 見つかったタグファイルのディレクトリに移動して、ctagsをバックグラウンド実行（エラー出力破棄）
+  execute 'silent !cd' tags_dirpath '&& ctags -R -f' tag_name '2> /dev/null &'
+endfunction
+
+augroup ctags
+  autocmd!
+  autocmd BufWritePost * call s:execute_ctags()
+augroup END
+
+let g:run_rspec_bin = 'bundle exec rspec'

@@ -16,8 +16,8 @@ repo = 'Shougo/dein.vim'
 # repo = 'othree/yajs.vim'
 
 # Programming language
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
+# [[plugins]]
+# repo = 'sheerun/vim-polyglot'
 
 # icon設定
 [[plugins]]
@@ -48,7 +48,13 @@ repo = 'yuku-t/vim-ref-ri'
 [[plugins]]
 repo = '5t111111/denite-rails'
 
+# indentなど
+# [[plugins]]
+# repo = 'scrooloose/vimfiles'
+
 # Tag
+# [[plugins]]
+# repo = 'alpaca-tc/alpaca_tags'
 # [[plugins]]
 # repo = 'soramugi/auto-ctags.vim'
 # [[plugins]]
@@ -59,6 +65,12 @@ repo = '5t111111/denite-rails'
 # repo = '5t111111/alt-gtags.vim'
 # [[plugins]]
 # repo = 'tpope/vim-bundler'
+[[plugins]]
+repo = 'tsukkee/unite-tag'
+[[plugins]]
+repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'hewes/unite-gtags'
 
 # git
 [[plugins]]
@@ -76,10 +88,18 @@ repo = 'Shougo/denite.nvim'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 
+# メモ帳
+# [[plugins]]
+# repo = 'Shougo/junkfile.vim'
+
 # 状態自動保存・復帰
 # [[plugins]]
 # repo = 'xolox/vim-session'
 # depends = ['xolox/vim-misc']
+[[plugins]]
+repo = 'manasthakur/vim-sessionist'
+# [[plugins]]
+# repo = 'Shougo/unite-session'
 
 # [[plugins]]
 # repo = 'xolox/vim-misc'
@@ -114,7 +134,8 @@ repo = 'majutsushi/tagbar'
 
 # color設定
 [[plugins]]
-repo = 'tomasr/molokai'
+repo = 'raphamorim/lucario'
+# repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
@@ -153,8 +174,14 @@ repo = 'tomtom/tcomment_vim'
 # :Unite file_mruを使えるように
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-[[plugins]]
-repo = 'rking/ag.vim'
+# vimrc整理後,消したい
+# [[plugins]]
+# repo = 'rking/ag.vim'
+# [[plugins]]
+# repo = 'jremmen/vim-ripgrep'
+# ag, ripgrep両方入ってる
+# [[plugins]]
+# repo = 'yegappan/grep'
 
 # 画面リサイズ
 [[plugins]]
@@ -170,6 +197,9 @@ nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 '''
 
+# [[plugins]]
+# repo = 't9md/vim-quickhl'
+
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
 
@@ -178,10 +208,54 @@ repo = 'rhysd/clever-f.vim'
 repo = 'osyo-manga/vim-over'
 
 # yank
-[[plugins]]
-repo = 'LeafCage/yankround.vim'
-hook_add = '''
-'''
+# [[plugins]]
+# repo = 'LeafCage/yankround.vim'
+# hook_add = '''
+# '''
 
 # [[plugins]]
 # repo = 'kien/ctrlp.vim'
+
+# [[plugins]]
+# repo = 'Shougo/neco-syntax'
+
+# Rubyの自動補完
+# [[plugins]]
+# repo = 'Shougo/deoplete-rct'
+# on_ft = ['ruby']
+# [[plugins]]
+# repo = 'fishbullet/deoplete-ruby'
+# on_ft = ['ruby']
+
+# Rubyの自動補完
+# [[plugins]]
+# repo = 'osyo-manga/vim-monster'
+# hook_add = '''
+# let g:monster#completion#rcodetools#backend = "async_rct_complete"
+# let g:deoplete#sources#omni#input_patterns = {
+#   \ "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+#   \}
+# '''
+
+# [[plugins]]
+# repo = 'tpope/vim-dispatch'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+# on_event = ['InsertEnter']
+# on_source = ['Shougo/deoplete.vim']
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+# on_event = ['InsertEnter']
+# on_source = ['Shougo/neosnippet.vim']
+
+# 絵文字
+# [[plugins]]
+# repo = 'mattn/emoji-vim'
+
+# buffer
+# 後々導入
+# [[plugins]]
+# repo = 'ap/vim-buftabline'
