@@ -21,6 +21,8 @@ ln -sf ~/dotfiles/.zshenv ~/.zshenv
 
 # fish
 ln -sf ~/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+ln -sf ~/dotfiles/.config/fish/functions/peco_select_ghq_repository.fish ~/.config/fish/functions/peco_select_ghq_repository.fish
+ln -sf ~/dotfiles/.config/fish/functions/peco_select_history.fish ~/.config/fish/functions/peco_select_history.fish
 
 # tig
 ln -sf ~/dotfiles/.tigrc ~/.tigrc
