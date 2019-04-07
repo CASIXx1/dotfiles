@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# brew
+ln -sf ~/dotfiles/Brewfile ~/Brewfile
+
 # vim
 ln -sf ~/dotfiles/.vim/rc/dein.toml ~/.vim/rc/dein.toml
 ln -sf ~/dotfiles/.vim/rc/dein_lazy.toml ~/.vim/rc/dein_lazy.toml
