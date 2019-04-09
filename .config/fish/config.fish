@@ -1,6 +1,11 @@
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
 
+# pyenv
+set -gx PYENV_ROOT "$HOME/.pyenv"
+set -x PATH $PATH "$PYENV_ROOT/bin"
+status --is-interactive; and . (pyenv init - | psub)
+
 # peco
 function fish_user_key_bindings
   bind \cf peco_select_history # Bind for peco select history to Ctrl+R
