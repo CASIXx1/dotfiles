@@ -22,10 +22,6 @@ ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/.wgetrc ~/.wgetrc
 ln -sf ~/dotfiles/Brewfile ~/Brewfile
 
-# zsh
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.zshenv ~/.zshenv
-
 # fish
 ln -sf ~/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
 ln -sf ~/dotfiles/.config/fish/functions/git-sync.fish ~/.config/fish/functions/git-sync.fish
