@@ -11,6 +11,10 @@ ln -sf ~/dotfiles/.vimrc.basic ~/.vimrc.basic
 ln -sf ~/dotfiles/.vimrc.dein_load ~/.vimrc.dein_load
 ln -sf ~/dotfiles/.vimrc.nerdtree ~/.vimrc.nerdtree
 
+# neovim
+ln -sf ~/.vim ~/.config/nvim/
+ln -sf ~/.vimrc ~/.config/nvim/init.vim
+
 ln -sf ~/dotfiles/colors ~/.vim
 ln -sf ~/dotfiles/ftdetect ~/.vim
 ln -sf ~/dotfiles/indent ~/.vim
