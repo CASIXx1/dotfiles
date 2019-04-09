@@ -11,4 +11,5 @@ https://qiita.com/sizukutamago/items/2ba906ab3fa404eac02d#_reference-163929b0cc0
 ## vim
 `pip3 install neovim`
 
-
+# neovim
+`:call dein#update()` を実行すること

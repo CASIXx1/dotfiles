@@ -8,6 +8,8 @@ brew "fish"
 brew "ghq"
 # search
 brew "peco"
+brew "ag"
+brew "ripgrep"
 # git command cui
 brew "tig"
 # editor
