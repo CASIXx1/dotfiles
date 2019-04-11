@@ -199,3 +199,6 @@ function git
       command git $argv
   end
 end
+
+# alacritty用の設定
+export LANG=ja_JP.UTF-8

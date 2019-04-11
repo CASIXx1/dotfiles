@@ -1,5 +1,6 @@
 # mac application
 cask "karabiner-elements"
+cask "alacritty"
 
 # brew install
 # Shell
