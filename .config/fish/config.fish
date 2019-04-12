@@ -37,7 +37,7 @@ function gdv
 end
 
 #compdef _git gdv=git-diff
-alias gc='git commit -v'
+# alias gc='git commit -v'
 #compdef _git gc=git-commit
 alias gc!='git commit -v --amend'
 #compdef _git gc!=git-commit
@@ -47,7 +47,8 @@ alias gca!='git commit -v -a --amend'
 #compdef _git gca!=git-commit
 alias gcm='git commit -m'
 #compdef _git gcmsg=git-commit
-alias gco='git checkout'
+alias gc='git checkout'
+alias gcb='git checkout -b'
 #compdef _git gco=git-checkout
 # alias gcm='git checkout master'
 alias gr='git remote'
