@@ -1,9 +1,12 @@
 # mac application
 cask "karabiner-elements"
+cask "alacritty"
 
 # brew install
 # Shell
 brew "fish"
+# terminal
+brew "tmux"
 # manage git repos
 brew "ghq"
 # search

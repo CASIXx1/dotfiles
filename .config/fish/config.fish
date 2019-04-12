@@ -45,11 +45,11 @@ alias gca='git commit -v -a'
 #compdef _git gc=git-commit
 alias gca!='git commit -v -a --amend'
 #compdef _git gca!=git-commit
-alias gcmsg='git commit -m'
+alias gcm='git commit -m'
 #compdef _git gcmsg=git-commit
 alias gco='git checkout'
 #compdef _git gco=git-checkout
-alias gcm='git checkout master'
+# alias gcm='git checkout master'
 alias gr='git remote'
 #compdef _git gr=git-remote
 alias grv='git remote -v'
@@ -199,3 +199,6 @@ function git
       command git $argv
   end
 end
+
+# alacritty用の設定
+export LANG=ja_JP.UTF-8
