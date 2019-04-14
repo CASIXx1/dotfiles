@@ -125,8 +125,6 @@ repo = 'manasthakur/vim-sessionist'
 # [[plugins]]
 # repo = 'kannokanno/previm'
 # [[plugins]]
-# repo = 'plasticboy/vim-markdown'
-# [[plugins]]
 # repo = 'tyru/open-browser.vim'
 # table作成
 # [[plugins]]

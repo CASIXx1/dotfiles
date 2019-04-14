@@ -65,3 +65,10 @@ on_event = ['InsertEnter']
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+
+# Markdown
+[[plugins]]
+repo = 'godlygeek/tabular'
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['md']
