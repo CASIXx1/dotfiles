@@ -1,6 +1,7 @@
 # mac application
 cask "karabiner-elements"
 cask "alacritty"
+cask "postman"
 
 # brew install
 # Shell
