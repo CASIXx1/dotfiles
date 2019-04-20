@@ -66,6 +66,11 @@ on_event = ['InsertEnter']
 repo = 'fatih/vim-go'
 on_ft = ['go']
 
+# Python
+[[plugins]]
+repo = 'nvie/vim-flake8'
+on_ft = ['python']
+
 # Markdown
 [[plugins]]
 repo = 'godlygeek/tabular'
