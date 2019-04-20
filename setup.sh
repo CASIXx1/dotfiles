@@ -17,6 +17,7 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 # sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 #
 xcode-select --install
+brew update && brew upgrade pyenv
 pyenv install 3.7.3
 pyenv global 3.7.3
 pip3 install --upgrade neovim
