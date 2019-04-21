@@ -1,7 +1,10 @@
 # mac application
-cask "karabiner-elements"
 cask "alacritty"
+cask "dash"
+cask "karabiner-elements"
+cask "teamsql"
 cask "postman"
+cask "virtualbox"
 
 # brew install
 # Shell
