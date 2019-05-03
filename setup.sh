@@ -21,3 +21,7 @@ brew update && brew upgrade pyenv
 pyenv install 3.7.3
 pyenv global 3.7.3
 pip3 install --upgrade neovim
+
+# tmux-powerline
+cd
+git clone git://github.com/erikw/tmux-powerline.git
