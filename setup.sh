@@ -25,3 +25,10 @@ pip3 install --upgrade neovim
 # tmux-powerline
 cd
 git clone git://github.com/erikw/tmux-powerline.git
+
+# dot
+cd
+git clone https://github.com/ssh0/dot ~/.dot
+set -U DOT_REPO https://github.com/CASIXx1/dotfiles.git
+set -U DOT_DIR ~/dotfiles
+set -U DOT_SCR ~/.dot
