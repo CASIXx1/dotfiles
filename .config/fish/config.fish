@@ -203,3 +203,8 @@ end
 
 # alacritty用の設定
 export LANG=ja_JP.UTF-8
+
+# dot
+set -gx DOT_REPO "https://github.com/CASIXx1/dotfiles.git"
+set -gx DOT_DIR "$HOME/dotfiles"
+set -gx DOT_SCR "$HOME/.dot"
