@@ -12,4 +12,7 @@ chsh -s /usr/local/bin/fish
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 
 # fisherman
+## dot
 fisher add re3turn/fish-dot
+fisher add oh-my-fish/plugin-peco
+fisher add spin
