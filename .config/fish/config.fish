@@ -16,6 +16,9 @@ end
 # mysql
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 
+# bundler
+alias be='bundle exec'
+
 # Aliases
 alias g='git'
 #compdef g=git
