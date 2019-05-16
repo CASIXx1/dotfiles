@@ -33,3 +33,29 @@
 
 # brew
 Brewfile, Brewfile
+
+# vim
+.vim/rc/dein.toml, .vim/rc/dein.toml
+.vim/rc/dein_lazy.toml, .vim/rc/dein_lazy.toml
+.vimrc, .vimrc
+.vimrc.basic, .vimrc.basic
+.vimrc.dein_load, .vimrc.dein_load
+.vimrc.nerdtree, .vimrc.nerdtree
+
+# fish
+.config/fish/config.fish, .config/fish/config.fish
+.config/fish/functions/git-sync.fish, .config/fish/functions/git-sync.fish
+.config/fish/functions/peco_select_ghq_repository.fish, .config/fish/functions/peco_select_ghq_repository.fish
+.config/fish/functions/peco_select_history.fish, .config/fish/functions/peco_select_history.fish
+
+# tig
+.tigrc, .tigrc
+
+# tmux
+.tmux.conf, .tmux.conf
+
+# pry
+.pryrc, .pryrc
+
+# karabiner
+.config/karabiner/karabiner.json, .config/karabiner/karabiner.json
