@@ -45,8 +45,6 @@ Brewfile, Brewfile
 # fish
 .config/fish/config.fish, .config/fish/config.fish
 .config/fish/functions/git-sync.fish, .config/fish/functions/git-sync.fish
-.config/fish/functions/peco_select_ghq_repository.fish, .config/fish/functions/peco_select_ghq_repository.fish
-.config/fish/functions/peco_select_history.fish, .config/fish/functions/peco_select_history.fish
 
 # tig
 .tigrc, .tigrc
