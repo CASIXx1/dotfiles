@@ -17,6 +17,7 @@ brew "ghq"
 brew "peco"
 brew "ag"
 brew "ripgrep"
+brew "fzf"
 # git command cui
 brew "tig"
 # editor

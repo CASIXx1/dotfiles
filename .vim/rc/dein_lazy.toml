@@ -52,8 +52,13 @@ hook_add = 'let g:deoplete#enable_at_startup = 1'
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
 [[plugins]]
-repo = 'Townk/vim-autoclose'
+repo = 'jiangmiao/auto-pairs'
 on_event = ['InsertEnter']
+
+# [[plugins]]
+# repo = 'Townk/vim-autoclose'
+# on_event = ['InsertEnter']
+
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_event = ['InsertEnter']

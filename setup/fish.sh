@@ -16,3 +16,4 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 fisher add re3turn/fish-dot
 fisher add oh-my-fish/plugin-peco
 fisher add spin
+fisher add fzf

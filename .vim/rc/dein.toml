@@ -16,8 +16,8 @@ repo = 'Shougo/dein.vim'
 # repo = 'othree/yajs.vim'
 
 # Programming language
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
 
 # icon設定
 [[plugins]]
@@ -83,6 +83,8 @@ repo = 'airblade/vim-gitgutter'
 # repo = 'vim-jp/vimdoc-ja'
 
 # IDE化
+[[plugins]]
+repo = 'junegunn/fzf.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 [[plugins]]
@@ -257,3 +259,11 @@ repo = 'Shougo/neosnippet-snippets'
 # 後々導入
 # [[plugins]]
 # repo = 'ap/vim-buftabline'
+
+# mark
+[[plugins]]
+repo = 'jacquesbh/vim-showmarks'
+
+# 補完
+[[plugins]]
+repo = 'ervandew/supertab'
