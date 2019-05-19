@@ -6,6 +6,21 @@ set -gx PYENV_ROOT "$HOME/.pyenv"
 set -x PATH $PATH "$PYENV_ROOT/bin"
 status --is-interactive; and . (pyenv init - | psub)
 
+function peco_select_ghq_repository
+  set -l query (commandline)
+
+  if test -n $query
+    set peco_flags --query "$query"
+  end
+
+  ghq list | peco $peco_flags | read line
+
+  if [ $line ]
+    ghq look $line
+    commandline -f repaint
+  end
+end
+
 # peco
 function fish_user_key_bindings
   bind \cf peco_select_history # Bind for peco select history to Ctrl+R
