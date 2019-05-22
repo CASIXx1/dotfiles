@@ -9,7 +9,6 @@ oh-my-fish/theme-bobthefish
 fisherman/getopts
 fisherman/git_util
 fisherman/gitignore
-fisherman/rbenv
 fisherman/spin
 tsu-nera/fish-peco_open_gh_repository
 tsu-nera/fish-peco_recentd
