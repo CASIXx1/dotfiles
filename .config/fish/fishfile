@@ -6,6 +6,7 @@ oh-my-fish/plugin-extract
 oh-my-fish/plugin-pbcopy
 oh-my-fish/plugin-peco
 oh-my-fish/theme-bobthefish
+oh-my-fish/plugin-nodenv
 fisherman/getopts
 fisherman/git_util
 fisherman/gitignore
