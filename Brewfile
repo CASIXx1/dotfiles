@@ -13,6 +13,7 @@ brew "fish"
 brew "tmux"
 # manage git repos
 brew "ghq"
+brew "hub"
 # search
 brew "peco"
 brew "ag"
@@ -24,3 +25,7 @@ brew "tig"
 brew "neovim"
 # manage python versions
 brew "pyenv"
+
+# heroku
+tap "heroku/brew"
+brew "heroku"
