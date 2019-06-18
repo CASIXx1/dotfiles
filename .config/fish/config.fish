@@ -239,7 +239,7 @@ set -gx DOT_SCR "$HOME/.dot"
 
 # hub
 
-alias git='hub'
+# alias git='hub'
 
 function __fish_hub_needs_command
   set cmd (commandline -opc)
