@@ -1,7 +1,10 @@
 # mac application
 cask "alacritty"
+cask "google-chrome"
 cask "dash"
+cask "iterm2"
 cask "karabiner-elements"
+cask "slack"
 cask "teamsql"
 cask "postman"
 cask "virtualbox"

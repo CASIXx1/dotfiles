@@ -1,3 +1,10 @@
+# brewがない可能性を考慮
+xcode-select --install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# fishが入っていない可能性を考慮
+brew install fish
+
 # デフォルトシェルをfishに設定
 #
 # もし、出来ない場合は
