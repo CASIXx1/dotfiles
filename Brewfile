@@ -1,7 +1,9 @@
 # mac application
 cask "alacritty"
-cask "google-chrome"
+cask "boostnote"
 cask "dash"
+cask "docker-toolbox"
+cask "google-chrome"
 cask "iterm2"
 cask "karabiner-elements"
 cask "slack"
@@ -32,3 +34,8 @@ brew "pyenv"
 # heroku
 tap "heroku/brew"
 brew "heroku"
+
+# docker
+brew "docker"
+brew "docker-compose"
+brew "docker-machine"
