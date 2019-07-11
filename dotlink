@@ -37,10 +37,10 @@ Brewfile, Brewfile
 # vim
 .vim/rc/dein.toml, .vim/rc/dein.toml
 .vim/rc/dein_lazy.toml, .vim/rc/dein_lazy.toml
-.vimrc, .vimrc
-.vimrc.basic, .vimrc.basic
-.vimrc.dein_load, .vimrc.dein_load
-.vimrc.nerdtree, .vimrc.nerdtree
+.vim/.vimrc, .vimrc
+.vim/.vimrc.basic, .vimrc.basic
+.vim/.vimrc.dein_load, .vimrc.dein_load
+.vim/.vimrc.nerdtree, .vimrc.nerdtree
 
 # fish
 .config/fish/config.fish, .config/fish/config.fish
