@@ -16,6 +16,11 @@ cask "virtualbox"
 brew "fish"
 # terminal
 brew "tmux"
+# front end
+brew "yarn"
+# DB
+brew "mysql"
+brew "redis"
 # manage git repos
 brew "ghq"
 brew "hub"
@@ -28,13 +33,13 @@ brew "fzf"
 brew "tig"
 # editor
 brew "neovim"
-# manage python versions
+# manage versions
+brew "nodenv"
 brew "pyenv"
-
+brew "rbenv"
 # heroku
 tap "heroku/brew"
 brew "heroku"
-
 # docker
 brew "docker"
 brew "docker-compose"
