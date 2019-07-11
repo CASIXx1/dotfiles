@@ -47,6 +47,9 @@ Brewfile, Brewfile
 .config/fish/fishfile, .config/fish/fishfile
 .config/fish/functions/git-sync.fish, .config/fish/functions/git-sync.fish
 
+# git
+.gitconfig, .gitconfig
+
 # tig
 .tigrc, .tigrc
 
