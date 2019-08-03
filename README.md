@@ -14,6 +14,8 @@
     - `dot update`
 - neovim setup
   - `sh ./setup/neovim.sh`
+  - `nvim .vim/.vimrc.dein_load`
+    - `if &runtimepath !~# '/dein.vim` を一旦削除して、nvim再起動
   - nvim上で, `:call dein#update()`
 - nerdfont setup
   - `sh ./setup/nerd-fonts-install.sh`
