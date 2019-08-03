@@ -1,3 +1,10 @@
+# 始め方
+
+- dotfilesをクローンする
+  - `git clone https://github.com/CASIXx1/dotfiles.git`
+- brew install
+  - `brew bundle`
+
 # config
 vimrcやzshrcなどのconfigリポジトリ
 
