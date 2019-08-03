@@ -1,22 +1,21 @@
-# 始め方
+# Setting
 
 - dotfilesをクローンする
   - `git clone https://github.com/CASIXx1/dotfiles.git`
 - brew install
   - `brew bundle`
-
-# config
-vimrcやzshrcなどのconfigリポジトリ
-
-nerdtreeでのicon設定
-https://github.com/ryanoasis/nerd-fonts#font-installation
-
-iterm2上でfontを設定する必要あり
-https://qiita.com/sizukutamago/items/2ba906ab3fa404eac02d#_reference-163929b0cc001a56c9b0
-
-# vimrc
-## vim
-`pip3 install neovim`
-
-# neovim
-`:call dein#update()` を実行すること
+- fish setup
+- dot setup
+  - others setup
+  - fisher
+    - `cp ./.config/fish/fishfile ~/.config/fish/fishfile`
+    - `cp ./.config/fish/config.fish ~/.config/fish/config.fish`
+    - `exec fish`
+    - `dot update`
+- neovim setup
+  - `sh ./setup/neovim.sh`
+  - nvim上で, `:call dein#update()`
+- nerdfont setup
+  - `sh ./setup/nerd-fonts-install.sh`
+  - iterm2でfontを設定
+    - https://qiita.com/sizukutamago/items/2ba906ab3fa404eac02d#_reference-163929b0cc001a56c9b0
