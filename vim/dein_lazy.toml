@@ -78,7 +78,5 @@ on_ft = ['python']
 
 # Markdown
 [[plugins]]
-repo = 'godlygeek/tabular'
-[[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft = ['md']

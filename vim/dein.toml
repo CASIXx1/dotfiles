@@ -124,10 +124,12 @@ repo = 'manasthakur/vim-sessionist'
 # Markdown
 # [[plugins]]
 # repo = 'AtsushiSakai/myvim'
-# [[plugins]]
-# repo = 'kannokanno/previm'
-# [[plugins]]
-# repo = 'tyru/open-browser.vim'
+[[plugins]]
+repo = 'godlygeek/tabular'
+[[plugins]]
+repo = 'kannokanno/previm'
+[[plugins]]
+repo = 'tyru/open-browser.vim'
 # table作成
 # [[plugins]]
 # repo = 'ywatase/mdt.vim'
