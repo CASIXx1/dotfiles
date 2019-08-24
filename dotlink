@@ -43,9 +43,9 @@ vim/.vimrc.dein_load, .vimrc.dein_load
 vim/.vimrc.nerdtree, .vimrc.nerdtree
 
 # fish
-.config/fish/config.fish, .config/fish/config.fish
-.config/fish/fishfile, .config/fish/fishfile
-.config/fish/functions/git-sync.fish, .config/fish/functions/git-sync.fish
+fish/config.fish, .config/fish/config.fish
+fish/fishfile, .config/fish/fishfile
+fish/functions/git-sync.fish, .config/fish/functions/git-sync.fish
 
 # git
 .gitconfig, .gitconfig
