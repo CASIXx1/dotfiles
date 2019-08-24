@@ -50,6 +50,7 @@ set smarttab
 
 " Clipboardと連携
 set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " ペースト時にインデントズレないように
 if &term =~ "xterm"
