@@ -37,4 +37,5 @@ function git-sync
     else
         count $modifieds >/dev/null 2>&1; and command git stash drop
     end
+    echo "finish!"
 end
