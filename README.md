@@ -3,7 +3,7 @@
 - dotfilesをクローンする
   - `git clone https://github.com/CASIXx1/dotfiles.git`
 - brew install
-  - `brew bundle`
+  - `sh brew_install.sh`
 - fish setup
 - dot setup
   - others setup
