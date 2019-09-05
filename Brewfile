@@ -1,5 +1,6 @@
 # mac application
 cask "alacritty"
+cask "alfred"
 cask "boostnote"
 cask "dash"
 cask "docker-toolbox"
