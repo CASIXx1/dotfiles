@@ -15,6 +15,9 @@ set nowrap
 " 検索結果をハイライト
 set hlsearch
 
+"ハイライト解除のmapping
+nnoremap <F3> :noh<CR>
+
 " 小文字大文字無視で検索
 set ignorecase
 set smartcase
@@ -78,39 +81,12 @@ augroup END
 " スワップファイルを作成しない
 :set noswapfile
 
-" neocomplcacheの設定
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-
-
-" Rsense用の設定
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-"rsenseのインストールフォルダがデフォルトと異なるので設定
-let g:rsenseHome = expand('/usr/local/bin/rsense')
-let g:rsenseUseOmniFunc = 1
+" markdown設定
+au BufRead,BufNewFile *.md set filetype=markdown
 
 set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
 
 " colorscheme molokai
 colorscheme lucario
@@ -122,3 +98,9 @@ set termguicolors
 " " 背景色¬
 " set background=dark
 
+" indent
+" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
+" let g:indent_guides_enable_on_vim_startup = 1
+
+let g:indentLine_color_term = 239
+let g:indentLine_char = '¦'

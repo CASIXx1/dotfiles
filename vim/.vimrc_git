@@ -1,0 +1,14 @@
+" tigを呼び出す
+nnoremap tig :<C-u>w<CR>:te tig<CR>
+
+" gitgitterの反映時間
+set updatetime=1000
+
+fun! PullAndRefresh()
+  set noconfirm
+  !git pull
+  bufdo e!
+  set confirm
+endfun
+
+nmap <silent> 'pr :<C-u>call PullAndRefresh()<CR>

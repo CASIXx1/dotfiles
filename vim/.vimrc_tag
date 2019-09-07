@@ -1,0 +1,91 @@
+" Ctagの場所指定
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+
+" unite tag
+let g:unite_source_tag_max_name_length = 15
+let g:unite_source_tag_max_kind_length = 5
+let g:unite_source_tag_max_fname_length = 80
+
+" unite-tag
+autocmd BufEnter *
+\   if empty(&buftype)
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
+\|  endif
+
+" gtags
+" カーソル下の呼び出し元一覧を出力
+nnoremap <silent> ,tr  :<C-u>Unite gtags/ref:<CR>
+" カーソル下の定義元を出力
+nnoremap <silent> ,td  :<C-u>Unite gtags/def:<CR>
+" タグファイル内grep
+nnoremap <silent> ,tg  :<C-u>Unite gtags/grep:<CR>
+
+function! s:execute_ctags() abort
+  " 探すタグファイル名
+  let tag_name = 'tags'
+  " ディレクトリを遡り、タグファイルを探し、パス取得
+  let tags_path = findfile(tag_name, '.;')
+  " タグファイルパスが見つからなかった場合
+  if tags_path ==# ''
+    return
+  endif
+
+  " タグファイルのディレクトリパスを取得
+  " `:p:h`の部分は、:h filename-modifiersで確認
+  let tags_dirpath = fnamemodify(tags_path, ':p:h')
+  " 見つかったタグファイルのディレクトリに移動して、ctagsをバックグラウンド実行（エラー出力破棄）
+  execute 'silent !cd' tags_dirpath '&& ctags -R -f' tag_name '2> /dev/null &'
+endfunction
+
+augroup ctags
+  autocmd!
+  autocmd BufWritePost * call s:execute_ctags()
+augroup END
+
+" Taglist
+" let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+" let Tlist_Show_One_File = 1
+" let Tlist_Use_Right_Window = 1
+" let Tlist_Exit_OnlyWindow = 1
+" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
+
+" Tagbar
+map <silent> <leader>t :TagbarToggle<CR>
+
+" let g:auto_update_gtags = 1
+
+" map <C-g> :Gtags
+" map <C-h> :Gtags -f %<CR>
+" map <C-j> :GtagsCursor<CR>
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+
+" rubyファイル保存時に、自動でtagファイル生成
+" autocmd BufWritePost *.rb !ripper-tags -R -f .tags
+
+" let g:auto_ctags = 1
+" let g:auto_ctags_directory_list = ['tmp']
+" let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+" let g:auto_ctags_filetype_mode = 1
+
+" set tags=tags;~
+
+" let g:alpaca_tags#config = {
+"     \   '_' : '-R --sort=yes',
+"     \   'ruby': '--languages=+Ruby',
+"     \ }
+"
+" augroup AlpacaTags
+"   autocmd!
+"   if exists(':AlpacaTags')
+"     autocmd BufWritePost Gemfile AlpacaTagsBundle
+"     autocmd BufEnter     *       AlpacaTagsSet
+"     autocmd BufWritePost *       AlpacaTagsUpdate
+"   endif
+" augroup END
+
+" for vim-tags
+" tagジャンプの時に複数候補がある時に一覧表示する
+" nnoremap <C-]> g<C-]>
+

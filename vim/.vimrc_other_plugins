@@ -1,0 +1,141 @@
+"------------------------------------
+" emmet
+"------------------------------------
+"
+let g:user_emmet_leader_key = '<C-E>'
+
+
+"------------------------------------
+" eskk
+"------------------------------------
+"
+" let g:eskk#large_dictionary = {
+"   \ 'path': $HOME . "/SKK-JISYO.L",
+"   \ 'sorted': 1,
+"   \ 'encoding': 'euc-jp',
+"   \}
+"
+" let g:eskk#enable_completion = 1
+" let g:eskk#egg_like_newline = 1
+
+
+"------------------------------------
+" vimshell
+"------------------------------------
+"
+" ,vs: シェルを起動
+nnoremap <silent> ,vs :VimShell<CR>
+" ,vsp: シェルを起動
+nnoremap <silent> ,vp :VimShellPop<CR>
+" ,ipy: pythonを非同期で起動
+nnoremap <silent> ,ipy :VimShellInteractive python<CR>
+" ,irb: irbを非同期で起動
+nnoremap <silent> ,irb :VimShellInteractive irb<CR>
+" ,ss: 非同期で開いたインタプリタに現在の行を評価させる
+vmap <silent> ,ss :VimShellSendString<CR>
+" 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
+nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+" 現在のディレクトリを表示する
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+
+" 現在開いているファイルを実行 (only php|ruby|go)
+function! ExecuteCurrentFile()
+  if &filetype == 'php' || &filetype == 'ruby'
+    exe '!' . &filetype . ' %'
+  endif
+  if &filetype == 'go'
+    exe '!go run *.go'
+  endif
+endfunction
+" nnoremap <Space> :call ExecuteCurrentFile()<CR>
+
+"------------------------------------
+" easyaligin
+"------------------------------------
+"
+" 整形
+vmap <Enter> <Plug>(EasyAlign)
+
+"------------------------------------
+" anzu
+"------------------------------------
+"
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
+
+"------------------------------------
+" matchit
+"------------------------------------
+"
+" def end移動
+" matchitを有効化
+source $VIMRUNTIME/macros/matchit.vim
+runtime macros/matchit.vim
+
+" ハイライトを有効にする
+let g:hl_matchit_enable_on_vim_startup = 1
+
+" カーソル下のハイライトをトグルする
+map <Space>m <Plug>(quickhl-manual-this)
+" ハイライトをすべて消す
+map <Space>M <Plug>(quickhl-manual-reset)
+
+
+"------------------------------------
+" vim-over
+"------------------------------------
+"
+" 全体置換
+nnoremap <silent> <Space>o :OverCommandLine<CR>%s//g<Left><Left>
+
+" 選択範囲置換
+vnoremap <silent> <Space>o :OverCommandLine<CR>s//g<Left><Left>
+
+" カーソルしたの単語置換
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+
+"------------------------------------
+" ale
+"------------------------------------
+"
+" 文法チェックは保存時だけでいい
+" Write this in your vimrc file
+" let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+
+"------------------------------------
+" openbrowser
+"------------------------------------
+"
+" https://gist.github.com/qickstarter/3706057
+" function! OpenYard(...)
+"   let gem = a:1 == "" ? "" : a:1
+"   if gem == ""
+"     call OpenBrowser("http://localhost:8808/")
+"   else
+"     let url = "http://localhost:8808/docs/" . tolower(gem) . "/frames/"
+"     call OpenBrowser(url)
+"   endif
+" endfunction
+"
+" command!
+" \   -nargs=* -complete=file
+" \   OpenYard
+" \   call OpenYard(<q-args>)
+
+" マッピング
+" imap <Space>y :<C-U>OpenYard <C-R><C-W><CR>
+"
+" カーソル下のURLや単語をブラウザで開く
+" nmap <Leader>b <Plug>(openbrowser-smart-search)
+" vmap <Leader>b <Plug>(openbrowser-smart-search)
+
