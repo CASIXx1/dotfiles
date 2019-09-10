@@ -17,6 +17,8 @@ cask "virtualbox"
 # brew install
 # Shell
 brew "fish"
+## Shell plugins
+brew "starship"
 # terminal
 brew "tmux"
 # front end

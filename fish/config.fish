@@ -314,3 +314,6 @@ complete -f -c hub -n ' __fish_hub_using_command delete' -s y -d "Skip the confi
 complete -f -c hub -n ' __fish_hub_using_command delete' -l yes -d "Skip the confirmation prompt"
 # ci-status
 complete -f -c hub -n ' __fish_hub_using_command ci-status' -s v -d "Print detailed report of all status checks and their URLs"
+
+# starship
+eval (starship init fish)
