@@ -1,5 +1,7 @@
 # Setting
 
+- default設定をする
+  - sh .macos
 - dotfilesをクローンする
   - `git clone https://github.com/CASIXx1/dotfiles.git`
 - brew install
