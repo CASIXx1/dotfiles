@@ -269,3 +269,7 @@ repo = 'jacquesbh/vim-showmarks'
 # 補完
 [[plugins]]
 repo = 'ervandew/supertab'
+
+# dash
+# [[plugins]]
+# repo = 'rizzatti/dash.vim'
