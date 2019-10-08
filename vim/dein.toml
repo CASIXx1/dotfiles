@@ -140,6 +140,8 @@ repo = 'raphamorim/lucario'
 # repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
