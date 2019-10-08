@@ -88,6 +88,10 @@ repo = 'junegunn/fzf.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 [[plugins]]
+repo = 'Jagua/vim-denite-ghq'
+[[plugins]]
+repo = 'neoclide/denite-git'
+[[plugins]]
 repo = 'majutsushi/tagbar'
 
 # メモ帳
@@ -135,6 +139,8 @@ repo = 'tyru/open-browser.vim'
 # repo = 'ywatase/mdt.vim'
 
 # color設定
+[[plugins]]
+repo = 'rhysd/try-colorscheme.vim'
 [[plugins]]
 repo = 'raphamorim/lucario'
 # repo = 'tomasr/molokai'
@@ -211,6 +217,10 @@ repo = 'rhysd/clever-f.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-over'
 
+# テスト
+[[plugins]]
+repo = 'janko/vim-test'
+
 # yank
 # [[plugins]]
 # repo = 'LeafCage/yankround.vim'
@@ -271,7 +281,13 @@ repo = 'jacquesbh/vim-showmarks'
 # 補完
 [[plugins]]
 repo = 'ervandew/supertab'
+[[plugins]]
+repo = 'rhysd/github-complete.vim'
 
 # dash
 # [[plugins]]
 # repo = 'rizzatti/dash.vim'
+
+# Template
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
