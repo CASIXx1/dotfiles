@@ -42,6 +42,8 @@ brew "neovim"
 brew "nodenv"
 brew "pyenv"
 brew "rbenv"
+# circleci
+brew "circleci", args: ["ignore-dependencies"]
 # heroku
 tap "heroku/brew"
 brew "heroku"
