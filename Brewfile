@@ -9,6 +9,7 @@ cask "discord"
 cask "evernote"
 cask "google-chrome"
 cask "iterm2"
+cask "jasper"
 cask "karabiner-elements"
 cask "slack"
 cask "teamsql"
@@ -39,6 +40,8 @@ brew "fzf"
 brew "tig"
 # editor
 brew "neovim"
+# elixir
+brew "elixir"
 # manage versions
 brew "nodenv"
 brew "pyenv"
