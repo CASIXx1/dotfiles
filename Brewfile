@@ -40,6 +40,8 @@ brew "fzf"
 brew "tig"
 # editor
 brew "neovim"
+# tags
+brew "ctags"
 # elixir
 brew "elixir"
 # manage versions
