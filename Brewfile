@@ -10,6 +10,7 @@ cask "discord"
 cask "evernote"
 cask "google-chrome"
 cask "iterm2"
+cask "jasper"
 cask "karabiner-elements"
 cask "slack"
 cask "teamsql"
@@ -42,6 +43,10 @@ brew "tig"
 brew "imagemagick"
 # editor
 brew "neovim"
+# tags
+brew "ctags"
+# elixir
+brew "elixir"
 # manage versions
 brew "nodenv"
 brew "pyenv"
