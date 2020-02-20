@@ -1,9 +1,10 @@
 # mac application
 cask "alacritty"
 cask "alfred"
+cask "amazon-music"
 cask "boostnote"
 cask "dash"
-cask "docker-toolbox"
+cask "docker"
 cask "dropbox"
 cask "discord"
 cask "evernote"
@@ -37,6 +38,8 @@ brew "ripgrep"
 brew "fzf"
 # git command cui
 brew "tig"
+# image
+brew "imagemagick"
 # editor
 brew "neovim"
 # manage versions
@@ -50,5 +53,3 @@ tap "heroku/brew"
 brew "heroku"
 # docker
 brew "docker"
-brew "docker-compose"
-brew "docker-machine"

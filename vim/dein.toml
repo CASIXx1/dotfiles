@@ -291,3 +291,7 @@ repo = 'rhysd/github-complete.vim'
 # Template
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
+
+# Original
+[[plugins]]
+repo = 'CASIXx1/vim-recall'
