@@ -317,3 +317,8 @@ complete -f -c hub -n ' __fish_hub_using_command ci-status' -s v -d "Print detai
 
 # starship
 eval (starship init fish)
+
+set -gx LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
+set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+fish_add_path /usr/local/opt/libiconv/bin

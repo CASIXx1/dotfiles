@@ -47,6 +47,8 @@ brew "neovim"
 brew "ctags"
 # elixir
 brew "elixir"
+# golang
+brew "go"
 # manage versions
 brew "nodenv"
 brew "pyenv"
@@ -58,3 +60,7 @@ tap "heroku/brew"
 brew "heroku"
 # docker
 brew "docker"
+# network
+brew "fing"
+brew "telnet"
+brew "nmap"
